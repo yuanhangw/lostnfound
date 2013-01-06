@@ -58,7 +58,10 @@
 
     /* Downsize the brand/project name a bit */
     .navbar .brand {
-      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      /*padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      padding-left: 30px;
+      padding-right: 10px;
+      margin: 0 0 0 -5px;
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
@@ -71,6 +74,7 @@
 
     /* Offset the responsive button for proper vertical alignment */
     .navbar .btn-navbar {
+      padding-right:30px;
       margin-top: 10px;
     }
 
@@ -89,6 +93,7 @@
   <body>
 
     <%= render 'layouts/header' %>
+
     <div class="container-fluid">
 
       <% flash.each do |key, value| %>
@@ -113,8 +118,11 @@
             </div>
           </div>
 
-      <%= render 'layouts/footer' unless @skip_footer %>
+
 
     </div>
+
+    <%= render 'layouts/footer' unless @skip_footer %>   
+
   </body>
 </html>
