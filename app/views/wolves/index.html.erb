@@ -1,0 +1,15 @@
+<% provide(:title, 'All events') %>
+<h1>All events</h1>
+
+<% if signed_in? %>
+  <%= render 'wolf_form' %>
+<% end %>
+
+<%= will_paginate %>
+
+<ul class="wolves">
+  <%= render @wolves %>
+</ul>
+
+<%= will_paginate %>
+

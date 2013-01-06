@@ -1,0 +1,15 @@
+<% provide(:title, @wolf.content) %>
+<h1>Event Detail</h1>
+<span class="content"><%= @wolf.content %></span>
+<span>Posted by <%= User.find(@wolf.user_id).name %></span>
+<span><%= time_ago_in_words(@wolf.created_at) %> ago.</span>
+<span>spreaded 
+  <strong id="spread_count" class="stat">
+    <%= @wolf.smokes.count %> times.
+  </strong>
+</span>
+<h1>Spreads</h1>
+<ol class="smokes">
+  <%= render @wolf.smokes %>
+</ol>
+<%= will_paginate @smokes %>
