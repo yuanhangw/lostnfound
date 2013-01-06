@@ -1,0 +1,2 @@
+module WolvesHelper
+end
