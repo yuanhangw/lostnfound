@@ -18,19 +18,22 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'execjs'
-  gem 'libv8', '3.3.10.4'
+  gem 'sass-rails',   '~> 3.2.5'
+
+  # take off some of simon's gems
+  # gem 'execjs'
+  # gem 'libv8', '3.3.10.4'
   # gem 'therubyracer', '0.10.2'
-  gem 'coffee-rails', '~> 3.2.1'
+  
+  gem 'coffee-rails', '~> 3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.2.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.2'
 
 group :test do
   gem 'capybara', '1.1.2'
