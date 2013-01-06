@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @skip_footer = true
+    @skip_footer = false
+    @user = User.new
   end
 
   def help

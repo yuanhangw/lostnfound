@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+
     <title><%= yield(:title) %></title>
     <%= stylesheet_link_tag    "application", :media=> "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
   </head>
+
+<style>
+  body{
+
+        padding-top: 140px;
+        padding-bottom: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+            
+        background: url(<%=asset_path 'world.jpg'%>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;  
+  }
+
+</style>
+
   <body>
+
     <%= render 'layouts/header' %>
-    <div class="container">
+    <div class="container-fluid">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <% end %>      
       <%= yield %>
       <%= render 'layouts/footer' unless @skip_footer %>
     </div>

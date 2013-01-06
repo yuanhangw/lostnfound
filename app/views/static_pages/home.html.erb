@@ -1,15 +1,58 @@
-<div class="front-welcome-text">
-  <h1>Welcome to Sample App</h1>
-  <p>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </p>
 
-  <%= link_to "Sign up now!", signup_path, :class => "btn btn-large btn-primary" %>
+
+<div class ="row-fluid">
+        <div class ="span4 offset8">
+            <div class ="well well-small">
+               
+
+				
+   				      <%= form_for(:session, url: sessions_path) do |f| %>
+
+                      <legend>
+                            <a class ="lead">Sign in</a>
+                      </legend>
+                      <div class="divider"></div>
+
+				      <%= f.text_field :email, class: "input block level",placeholder: "email" %>
+
+
+				      <%= f.password_field :password, class: "input block level", placeholder: "password" %>
+
+				      <%= f.submit "Sign in", class: "btn btn-small btn-info" %>
+				      <%end%>
+
+				  
+			</div>
+                
+  
+            
+            
+            <div class ="well well-small">
+                
+
+					    <%= form_for(@user) do |f| %>
+
+					    <%= render 'shared/error_messages' , object: f.object%>
+
+                        <legend>
+                            <a class ="lead"> Not a Balloonman ?</a> <small> Sign up</small>
+
+                        </legend>
+
+                        <div class="divider"></div>
+
+					      <%= f.text_field :name, class: "input block level", placeholder: "name"%>
+
+					      <%= f.text_field :email, class: "input block level", placeholder: "email" %>
+
+					      <%= f.password_field :password, class: "input block level", placeholder: "password" %>
+
+					      
+					      <%= f.password_field :password_confirmation, class: "input block level", placeholder: "password confirmation" %>
+
+					      <%= f.submit "Create my account", class: "btn btn-small btn-success" %>
+					    <% end %>
+                
+            </div>
+        </div>
 </div>
-
-<div id="bg">
-  <img src="http://www.cs.duke.edu/~msirivia/dandelion/dandelion.jpeg" alt="">
-</div>
-
