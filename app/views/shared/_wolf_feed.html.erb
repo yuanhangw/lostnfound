@@ -1,0 +1,8 @@
+<% if @wolf_feed_items.any? %>
+
+  <ol class="events">
+    <%= render partial: 'shared/wolf_feed_item', collection: @wolf_feed_items %>
+  </ol>
+  <%= will_paginate @wolf_feed_items %>
+
+<% end %>

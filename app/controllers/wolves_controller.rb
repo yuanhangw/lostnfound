@@ -10,9 +10,9 @@ class WolvesController < ApplicationController
       # add root smoke
       @smoke = Smoke.create(:user_id => current_user.id, :wolf_id =>@wolf.id, :parent_user_id => current_user.id)
       flash[:success] = "Event created!"
-      redirect_to @wolf
+      redirect_to root_path
     else
-      render 'static_page/home'
+      redirect_to root_path
     end
   end
  

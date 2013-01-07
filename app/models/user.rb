@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :wolves, :dependent => :destroy
   has_many :smokes, :foreign_key => "user_id", :dependent => :destroy
-  has_many :smoked_wolves, :through => :smokes, :source => :wolf_id
+  has_many :smoked_wolves, :through => :smokes, :source => :wolf
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -24,6 +24,13 @@ class User < ActiveRecord::Base
   def smoke!(wolf)
     smokes.create!(:wolf_id => wolf.id)
   end
+
+  def wolf_feed
+  
+    self.smoked_wolves
+    
+  end
+
 
   private
     def create_remember_token

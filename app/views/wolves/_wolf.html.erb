@@ -1,8 +1,8 @@
-<li>
+<div class="well well-small"
   <span class="name"><%= User.find(wolf.user_id).name %></span>
   <span class="content"><%= wolf.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(wolf.created_at) %> ago.
   </span>
   <%= link_to "detail", wolf %> 
-</li>
+</div>

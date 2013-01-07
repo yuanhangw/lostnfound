@@ -1,0 +1,10 @@
+<div class="well well-small"
+  <span class="name"><%= User.find(wolf_feed_item.user_id).name %></span>
+  <span class="content"><%= wolf_feed_item.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
+  </span>
+ 
+  <%= link_to "detail",  wolf_feed_item%> 
+ 
+</div>

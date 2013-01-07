@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -120,6 +121,7 @@ p {
 /* footer */
 
 footer {
+
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
@@ -248,12 +250,11 @@ input {
   float: left;
   margin-right: 10px;
 }
-aside {
+
   textarea {
-    height: 100px;
+    height: 300px;
     margin-bottom: 5px;
   }
-}
 
 
 /* miscellaneous */
