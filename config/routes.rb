@@ -69,7 +69,7 @@ Dandelion::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy', :via => :delete
   match '/events', :to => 'wolves#index'
-
+  match '/event', :to => 'wolves#show'  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

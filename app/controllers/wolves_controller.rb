@@ -9,8 +9,9 @@ class WolvesController < ApplicationController
     if @wolf.save
       # add root smoke
       @smoke = Smoke.create(:user_id => current_user.id, :wolf_id =>@wolf.id, :parent_user_id => current_user.id)
-      flash[:success] = "Event created!"
-      redirect_to root_path
+      flash[:success] = "Event created! posted to twitter #{smoke_path(@smoke)}"
+      redirect_to wolves_path
+      # add post to social media instead of included link in the flash
     else
       redirect_to root_path
     end
