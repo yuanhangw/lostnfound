@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome! we are now connected to the matrix"
-      redirect_back_or @user
+      redirect_back_or root_path
     else
       render 'new'
     end
