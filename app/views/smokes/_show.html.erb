@@ -1,0 +1,45 @@
+
+  <legend>
+      <a class ="lead"> Help to spread a question </a><br> 
+      <small>Why should I do it 
+      </small><code>?</code>
+
+  </legend>
+
+  <div class="divider"></div>
+
+
+  <blockquote>
+  
+  <p><%= @smoke.wolf.content %></p>
+
+  <small>Posted by <i class="icon-user"></i> 
+  <%= User.find(@smoke.wolf.user_id).name %>
+  <i class="icon-time"></i>
+  <%= time_ago_in_words(@smoke.wolf.created_at) %> ago.
+  <i class="icon-fire"></i> 
+  <%= @smoke.wolf.smokers.count %> people helped to spread </small>
+  </blockquote>
+
+
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+    <p>
+      <small> <i class="icon-user"></i> 
+      <span class="label label-success"><%= User.find(@smoke.user_id).name %></span>
+      asked for your help to spread the question
+      <span class="timestamp">
+        <%= time_ago_in_words(@smoke.created_at) %> ago.</small>
+    </p>
+</div>
+
+<span>
+<code>URL here? unncessary</code>
+</span>
+
+
+    <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
+      <%= render 'shared/another_smoke_form', :smoke => @smoke %>
+    <% end %>
+

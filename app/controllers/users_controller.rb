@@ -49,8 +49,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcom to the Sample App!"
-      redirect_to root_path
+      flash[:success] = "Welcome! we are now connected to the matrix"
+      redirect_back_or @user
     else
       render 'new'
     end
@@ -65,6 +65,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
