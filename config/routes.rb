@@ -7,6 +7,11 @@ Dandelion::Application.routes.draw do
   match '/contact', :to => 'static_pages#contact'
   # match '/', :to => 'static_pages#home'
 
+  #omniauth routes
+  match '/auth/facebook/callback' => 'sessions#omni_create'
+  match '/auth/logout' => 'sessions#omniauth_destroy'
+
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :wolves,   :only => [:create, :destroy, :index, :show]

@@ -1,4 +1,11 @@
             <div class ="well well-small">
+
+              <% if current_user %>
+              Logged in as <%=current_user[:name]%>
+              <%= link_to 'logout','/auth/logout' %>
+              <% else %>
+              <%= link_to 'login with facebook','/auth/facebook' %>
+              <% end %>
                 
 
               <%= form_for(@user) do |f| %>
