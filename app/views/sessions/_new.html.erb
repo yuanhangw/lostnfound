@@ -9,13 +9,13 @@
 
               <%= f.text_field :email, class: "input block level",placeholder: "email" %>
 
-
               <%= f.password_field :password, class: "input block level", placeholder: "password" %>
 
               <%= f.submit "Sign in", class: "btn btn-small btn-info" %>
 
             <ul>
-              <span>Sign in with:</span>
+
+              <small>Sign in with:</small>
 
               <li><%= link_to 'Facebook','/auth/facebook' %></li>
               <li><%= link_to "Twitter", "/auth/twitter" %></li>
@@ -23,9 +23,8 @@
               <li><%= link_to "MyOpenID", "/auth/myopenid" %></li>
               <li><%= link_to "Other", "#" %></li>
             </ul>
-              <%end%>
+            <% end %>
 
-          
       </div>
                 
   

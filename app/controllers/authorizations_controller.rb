@@ -31,8 +31,8 @@ class AuthorizationsController < ApplicationController
         omniauth['extra']['user_hash']['id'] ? @authhash[:uid] =  omniauth['extra']['user_hash']['id'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] =  omniauth['provider'] : @authhash[:provider] = ''  
       elsif ['google', 'yahoo', 'twitter', 'myopenid', 'open_id'].index(authorization_route) != nil
-        omniauth['user_info']['email'] ? @authhash[:email] =  omniauth['user_info']['email'] : @authhash[:email] = ''
-        omniauth['user_info']['name'] ? @authhash[:name] =  omniauth['user_info']['name'] : @authhash[:name] = ''
+        omniauth['info']['email'] ? @authhash[:email] =  omniauth['info']['email'] : @authhash[:email] = (omniauth['info']['name']).gsub(" ", "_")+'@twitter.com'
+        omniauth['info']['name'] ? @authhash[:name] =  omniauth['info']['name'] : @authhash[:name] = ''
         omniauth['uid'] ? @authhash[:uid] = omniauth['uid'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] = omniauth['provider'] : @authhash[:provider] = ''
       else        
@@ -49,11 +49,12 @@ class AuthorizationsController < ApplicationController
         if signed_in?
           if auth
             flash[:notice] = 'Your account at ' + @authhash[:provider].capitalize + ' is already connected with this site.'
-            redirect_to authorizations_path
+            redirect_to root_path
           else
-            current_user.authorization.create!(:provider => @authhash[:provider], :uid => @authhash[:uid], :uname => @authhash[:name], :uemail => @authhash[:email])
+            #not working!!!!
+            current_user.add_authorization(@authhash)
             flash[:notice] = 'Your ' + @authhash[:provider].capitalize + ' account has been added for signing in at this site.'
-            redirect_to authorizations_path
+            redirect_to root_path
           end
         else
           if auth
@@ -88,30 +89,4 @@ class AuthorizationsController < ApplicationController
     end
   end
 
-
-  def newaccount
-    if params[:commit] == "Cancel"
-      session[:authhash] = nil
-      session.delete :authhash
-      redirect_to root_url
-    else  # create account
-      @newuser = User.new
-      @newuser.name = session[:authhash][:name]
-      @newuser.email = session[:authhash][:email]
-      @newuser.authorizations.build(:provider => session[:authhash][:provider], :uid => session[:authhash][:uid], :uname => session[:authhash][:name], :uemail => session[:authhash][:email])
-      
-      if @newuser.save!
-        # signin existing user
-        # in the session his user id and the authorization id used for signing in is stored
-        session[:user_id] = @newuser.id
-        session[:authorization_id] = @newuser.authorizations.first.id
-        
-        flash[:notice] = 'Your account has been created and you have been signed in!'
-        redirect_to root_url
-      else
-        flash[:error] = 'This is embarrassing! There was an error while creating your account from which we were not able to recover.'
-        redirect_to root_url
-      end  
-    end
-  end
 end
