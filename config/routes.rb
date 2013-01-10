@@ -8,8 +8,26 @@ Dandelion::Application.routes.draw do
   # match '/', :to => 'static_pages#home'
 
   #omniauth routes
-  match '/auth/facebook/callback' => 'sessions#omni_create'
+  #facebook alone
+  #match '/auth/:authorization/callback' => 'sessions#omni_create'
+  
+  match '/auth/:authorization/callback' => 'authorizations#create'
   match '/auth/logout' => 'sessions#omniauth_destroy'
+
+  # need those to build a authoration page
+  # match "/signin" => "services#signin"
+  # match "/signout" => "services#signout"
+
+   resources :authorizations, :only => [:index, :create, :destroy] do
+      collection do
+        get 'signin'
+        get 'signout'
+        get 'signup'
+        post 'newaccount'
+        get 'failure'
+      end
+    end
+
 
 
   resources :users

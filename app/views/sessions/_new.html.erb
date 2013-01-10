@@ -14,7 +14,15 @@
 
               <%= f.submit "Sign in", class: "btn btn-small btn-info" %>
 
-              <%= link_to 'login with facebook','/auth/facebook' %>
+            <ul>
+              <span>Sign in with:</span>
+
+              <li><%= link_to 'Facebook','/auth/facebook' %></li>
+              <li><%= link_to "Twitter", "/auth/twitter" %></li>
+              <li><%= link_to "Google", "/auth/google" %></li>
+              <li><%= link_to "MyOpenID", "/auth/myopenid" %></li>
+              <li><%= link_to "Other", "#" %></li>
+            </ul>
               <%end%>
 
           
