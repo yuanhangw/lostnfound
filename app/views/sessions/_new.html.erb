@@ -1,9 +1,24 @@
       <div class ="well well-small">
                 
+                      <legend>
+                            <a class ="lead">Sign in </a><small>with</small>
+                      </legend>
+                      <div class="divider"></div>
+
+    
+              <a href="/auth/facebook" class="btn btn-primary btn-small btn-block"><i class="icon-white icon-facebook"></i> Facebook </a>
+              <a href="/auth/twitter" class="btn btn-info btn-small btn-block"><i class="icon-white icon-twitter"></i>  Twitter </a>
+              <a href="/auth/google_oauth2" class="btn btn-success btn-small btn-block"><i class="icon-white icon-google-plus-sign"></i>  Google </a>
+
+
+      </div>
+
+      <div class ="well well-small">
+                
              <%= form_for(:session, url: sessions_path) do |f| %>
 
                       <legend>
-                            <a class ="lead">Sign in</a>
+                            <a class ="lead">Sign in</a> <small> like a true bolloonman</small>
                       </legend>
                       <div class="divider"></div>
 
@@ -13,16 +28,7 @@
 
               <%= f.submit "Sign in", class: "btn btn-small btn-info" %>
 
-            <ul>
 
-              <small>Sign in with:</small>
-
-              <li><%= link_to 'Facebook','/auth/facebook' %></li>
-              <li><%= link_to "Twitter", "/auth/twitter" %></li>
-              <li><%= link_to "Google", "/auth/google" %></li>
-              <li><%= link_to "MyOpenID", "/auth/myopenid" %></li>
-              <li><%= link_to "Other", "#" %></li>
-            </ul>
             <% end %>
 
       </div>
