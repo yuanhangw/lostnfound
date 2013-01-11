@@ -83,7 +83,7 @@ class AuthorizationsController < ApplicationController
             #session[:authorization_id] = auth.id
           
             flash[:notice] = 'Signed in successfully via ' + @authhash[:provider].capitalize + '.'
-            redirect_to root_url
+            redirect_back_or root_url
           else
             # this is a new user; show signup; @authhash is available to the view and stored in the sesssion for creation of a new user
             #session[:authhash] = @authhash
