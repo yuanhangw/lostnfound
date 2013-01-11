@@ -9,6 +9,11 @@ class SmokesController < ApplicationController
     @smoke.save!
     redirect_to root_path
     if @smoke.save
+
+      auth = current_user.authorizations.find_by_provider("twitter")
+      access_token = prepare_access_token(auth['token'], auth['secret'])
+      access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://hidden-brook-5001.herokuapp.com'+ smoke_path(@smoke) )
+
       flash[:sucess] = "Event Spreaded! posted to twitter,  Link: #{smoke_path(@smoke)}"
     else
     end

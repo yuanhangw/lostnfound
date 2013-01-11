@@ -11,7 +11,7 @@ class AuthorizationsController < ApplicationController
     params[:authorization] ? authorization_route = params[:authorization] : authorization_route = 'No authorization recognized (invalid callback)'
     # get the full hash from omniauth
     omniauth = request.env['omniauth.auth']
-    
+    flash[:success] = omniauth['credentials']['token']
     # continue only if hash and parameter exist
     if omniauth and params[:authorization]
 
@@ -23,26 +23,36 @@ class AuthorizationsController < ApplicationController
       if authorization_route == 'facebook'
         omniauth['info']['email'] ? @authhash[:email] =  omniauth['info']['email'] : @authhash[:email] = ''
         omniauth['info']['name'] ? @authhash[:name] =  omniauth['info']['name'] : @authhash[:name] = ''
+        omniauth['credentials']['token'] ? @authhash[:token] =  omniauth['credentials']['token'] : @authhash[:token] = ''
+        omniauth['credentials']['secret'] ? @authhash[:secret] =  omniauth['credentials']['secret'] : @authhash[:secret] = ''
         omniauth['uid'] ?  @authhash[:uid] =  omniauth['uid'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] = omniauth['provider'] : @authhash[:provider] = ''
       elsif authorization_route == 'google_oauth2'
         omniauth['info']['email'] ? @authhash[:email] =  omniauth['info']['email'] : @authhash[:email] = ''
         omniauth['info']['name'] ? @authhash[:name] =  omniauth['info']['name'] : @authhash[:name] = ''
+        omniauth['credentials']['token'] ? @authhash[:token] =  omniauth['credentials']['token'] : @authhash[:token] = ''
+        omniauth['credentials']['secret'] ? @authhash[:secret] =  omniauth['credentials']['secret'] : @authhash[:secret] = ''        
         omniauth['uid'] ?  @authhash[:uid] =  omniauth['uid'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] = omniauth['provider'] : @authhash[:provider] = ''  
       elsif authorization_route == 'twitter'
         omniauth['info']['email'] ? @authhash[:email] =  omniauth['info']['email'] : @authhash[:email] = (omniauth['info']['name']).gsub(" ", "_")+'@twitter.com'
         omniauth['info']['name'] ? @authhash[:name] =  omniauth['info']['name'] : @authhash[:name] = ''
+        omniauth['credentials']['token'] ? @authhash[:token] =  omniauth['credentials']['token'] : @authhash[:token] = ''
+        omniauth['credentials']['secret'] ? @authhash[:secret] =  omniauth['credentials']['secret'] : @authhash[:secret] = ''
         omniauth['uid'] ? @authhash[:uid] = omniauth['uid'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] = omniauth['provider'] : @authhash[:provider] = ''
       elsif authorization_route == 'github'
         omniauth['user_info']['email'] ? @authhash[:email] =  omniauth['user_info']['email'] : @authhash[:email] = ''
         omniauth['user_info']['name'] ? @authhash[:name] =  omniauth['user_info']['name'] : @authhash[:name] = ''
+        omniauth['credentials']['token'] ? @authhash[:token] =  omniauth['credentials']['token'] : @authhash[:token] = ''
+        omniauth['credentials']['secret'] ? @authhash[:secret] =  omniauth['credentials']['secret'] : @authhash[:secret] = ''        
         omniauth['extra']['user_hash']['id'] ? @authhash[:uid] =  omniauth['extra']['user_hash']['id'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] =  omniauth['provider'] : @authhash[:provider] = ''  
       elsif ['google', 'yahoo', 'myopenid', 'open_id'].index(authorization_route) != nil
         omniauth['info']['email'] ? @authhash[:email] =  omniauth['info']['email'] : @authhash[:email] = ''
         omniauth['info']['name'] ? @authhash[:name] =  omniauth['info']['name'] : @authhash[:name] = ''
+        omniauth['credentials']['token'] ? @authhash[:token] =  omniauth['credentials']['token'] : @authhash[:token] = ''
+        omniauth['credentials']['secret'] ? @authhash[:secret] =  omniauth['credentials']['secret'] : @authhash[:secret] = ''
         omniauth['uid'] ? @authhash[:uid] = omniauth['uid'].to_s : @authhash[:uid] = ''
         omniauth['provider'] ? @authhash[:provider] = omniauth['provider'] : @authhash[:provider] = ''
       else        
@@ -61,7 +71,6 @@ class AuthorizationsController < ApplicationController
             flash[:notice] = 'Your account at ' + @authhash[:provider].capitalize + ' is already connected with this site.'
             redirect_to root_path
           else
-            #not working!!!!
             current_user.add_authorization(@authhash)
             flash[:notice] = 'Your ' + @authhash[:provider].capitalize + ' account has been added for signing in at this site.'
             redirect_to root_path
@@ -82,7 +91,7 @@ class AuthorizationsController < ApplicationController
             #crappy way to bypass password requirement for user, potential loophole
              password = SecureRandom.hex
              user = User.new(name: @authhash[:name], email: @authhash[:email], password: password, password_confirmation: password)
-             user.authorizations.build(provider: @authhash[:provider], uid: @authhash[:uid])
+             user.authorizations.build(provider: @authhash[:provider], uid: @authhash[:uid], token: @authhash[:token], secret: @authhash[:secret])
              user.save
              flash[:success] = "Hi #{user.name}! You've signed up via #{@authhash[:provider]}."
              sign_in user

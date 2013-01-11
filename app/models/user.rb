@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   def add_authorization(auth_hash)
     # Check if the provider already exists, so we don't add it twice
     unless authorizations.find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid])
-      Authorization.create :user_id => self.id, :provider => auth_hash[:provider], :uid => auth_hash[:uid]
+      Authorization.create :user_id => self.id, :provider => auth_hash[:provider], :uid => auth_hash[:uid],:token => auth_hash[:token], :secret => auth_hash[:secret]
     end
   end
 

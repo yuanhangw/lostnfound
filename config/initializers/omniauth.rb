@@ -8,7 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # require "openid/fetchers"
   # OpenID.fetcher.ca_file = "#{Rails.root}/config/ca-bundle.crt"
   
-  provider :facebook, '482359131805610', 'ff5443aedaf0f5306695d62d386060b9'
+  provider :facebook, '482359131805610', 'ff5443aedaf0f5306695d62d386060b9', {:scope => 'publish_stream,offline_access,email'}
   provider :twitter, 'Q2xgUe6W5kpGtFSbHNtPAg', 'QwoOTeYVG7tPCtfztRoER51AafXP5L1CXJ9oyCzi4'
   provider :google_oauth2, '235803121137', 'H_xD3J57eHEsScu1Yd53B1mz'
   
