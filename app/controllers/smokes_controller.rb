@@ -10,7 +10,7 @@ class SmokesController < ApplicationController
     redirect_to root_path
     if @smoke.save
 
-      unless current_user.authorizations.find_by_provider("twitter")==nil ?
+      unless current_user.authorizations.find_by_provider("twitter").nil?
 
       auth = current_user.authorizations.find_by_provider("twitter")
       access_token = prepare_access_token(auth['token'], auth['secret'])
@@ -18,7 +18,7 @@ class SmokesController < ApplicationController
 
       end
 
-      unless current_user.authorizations.find_by_provider("facebook")==nil ?
+      unless current_user.authorizations.find_by_provider("facebook").nil?
 
       auth = current_user.authorizations.find_by_provider("facebook")
       access_token = FbGraph::User.me(auth['token'])

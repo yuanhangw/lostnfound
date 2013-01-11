@@ -11,7 +11,7 @@ class WolvesController < ApplicationController
       # add root smoke
       @smoke = Smoke.create(:user_id => current_user.id, :wolf_id =>@wolf.id, :parent_user_id => current_user.id)
       
-      unless current_user.authorizations.find_by_provider("twitter")==nil ?
+      unless current_user.authorizations.find_by_provider("twitter").nil?
 
       auth = current_user.authorizations.find_by_provider("twitter")
       access_token = prepare_access_token(auth['token'], auth['secret'])
@@ -19,7 +19,7 @@ class WolvesController < ApplicationController
 
       end
 
-      unless current_user.authorizations.find_by_provider("facebook")==nil ?
+      unless current_user.authorizations.find_by_provider("facebook").nil?
 
       auth = current_user.authorizations.find_by_provider("facebook")
       access_token = FbGraph::User.me(auth['token'])
