@@ -11,18 +11,21 @@ class WolvesController < ApplicationController
       # add root smoke
       @smoke = Smoke.create(:user_id => current_user.id, :wolf_id =>@wolf.id, :parent_user_id => current_user.id)
       
-      if current_user.authorizations.find_by_provider("twitter")!=nil
+      unless current_user.authorizations.find_by_provider("twitter")==nil ?
 
       auth = current_user.authorizations.find_by_provider("twitter")
       access_token = prepare_access_token(auth['token'], auth['secret'])
       access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://hidden-brook-5001.herokuapp.com'+ smoke_path(@smoke) )
 
-      elsif current_user.authorizations.find_by_provider("facebook")!=nil
-        
+      end
+
+      unless current_user.authorizations.find_by_provider("facebook")==nil ?
+
       auth = current_user.authorizations.find_by_provider("facebook")
       access_token = FbGraph::User.me(auth['token'])
       access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://hidden-brook-5001.herokuapp.com'+ smoke_path(@smoke) ,
        :name => "99 red ballon")
+      
       end
 
       flash[:success] = "Event created! posted to  t/f,  Link: #{smoke_path(@smoke)}"
