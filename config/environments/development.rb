@@ -34,4 +34,24 @@ Dandelion::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+
+  # require 'openid/store/filesystem'
+
+  # # load certificates
+  # require "openid/fetchers"
+  # OpenID.fetcher.ca_file = "#{Rails.root}/config/ca-bundle.crt"
+  
+  provider :facebook, '399028323511585', '47e5d4a5cd54c04bac914f60fa4ada0c', {:scope => 'publish_stream,offline_access,email'}
+  provider :twitter, 'Xz4B1t9D1muuM21CMunc3w', 'nSTUtyLy1VTM1n6TszvMOFMIX0DsrJDrgUw6XpNmM'
+  provider :google_oauth2, '996062987170', 'aGTpudjzACdXgsJIQV5Dw-FF'
+  
+  # # dedicated openid
+  # provider :openid, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
+end
+
+  
 end

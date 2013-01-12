@@ -11,7 +11,7 @@ class AuthorizationsController < ApplicationController
     params[:authorization] ? authorization_route = params[:authorization] : authorization_route = 'No authorization recognized (invalid callback)'
     # get the full hash from omniauth
     omniauth = request.env['omniauth.auth']
-    flash[:success] = omniauth['credentials']['token']
+    #flash[:success] = omniauth['credentials']['token']
     # continue only if hash and parameter exist
     if omniauth and params[:authorization]
 

@@ -55,6 +55,7 @@ class SmokesController < ApplicationController
     def signed_in_user
       unless signed_in?
         store_location
+        #implement auto signin here 
         redirect_to signin_url, notice: "Please sign in."
       end
     end
