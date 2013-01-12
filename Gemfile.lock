@@ -34,6 +34,8 @@ GEM
     bootstrap-sass (2.1.0.0)
     bootstrap-will_paginate (0.0.6)
       will_paginate
+    bootswatch-rails (0.2.0)
+      railties (>= 3.1)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -210,6 +212,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
+  bootswatch-rails
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.2)
   faker (= 1.0.1)
