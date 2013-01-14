@@ -70,7 +70,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    sign_out
+    sign_out_
     redirect_to root_url
   end
 
