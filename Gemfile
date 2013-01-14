@@ -4,6 +4,9 @@ gem 'rails', '3.2.10'
 gem 'bootstrap-sass', '2.1'
 
 
+gem 'activeadmin'
+ gem "meta_search",    '>= 1.1.0.pre'
+
 #to customize bootstrap
 gem 'bootswatch-rails'
 

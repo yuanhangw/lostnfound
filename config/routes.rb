@@ -1,5 +1,9 @@
 Dandelion::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "smokes/new"
 
   match '/help',  :to => 'static_pages#help'

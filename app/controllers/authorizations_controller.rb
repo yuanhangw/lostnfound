@@ -79,7 +79,7 @@ class AuthorizationsController < ApplicationController
           if auth
             # signin existing user
             # in the session his user id and the authorization id used for signing in is stored
-            sign_in auth.user
+            sign_in_ auth.user
             #session[:authorization_id] = auth.id
           
             flash[:notice] = 'Signed in successfully via ' + @authhash[:provider].capitalize + '.'
@@ -94,7 +94,7 @@ class AuthorizationsController < ApplicationController
              user.authorizations.build(provider: @authhash[:provider], uid: @authhash[:uid], token: @authhash[:token], secret: @authhash[:secret])
              user.save
              flash[:success] = "Hi #{user.name}! You've signed up via #{@authhash[:provider]}."
-             sign_in user
+             sign_in_ user
              redirect_back_or root_path   
           end
         end

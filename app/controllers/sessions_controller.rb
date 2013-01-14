@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       # Sign the user in and redirect to the user's show page.
-      sign_in user
+      sign_in_ user
       redirect_back_or root_path
     else
       flash.now[:error] = 'Invalid email/password combination'
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
        if @authorization
          flash[:success] = "Welcome back #{@authorization.user.name}! You have already signed up."
          user = User.find_by_email(auth_hash["info"]["email"])
-         sign_in user
+         sign_in_ user
          redirect_back_or root_path
        else
          #crappy way to bypass password requirement for user, potential loophole
@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
          user.authorizations.build(provider: auth_hash["provider"], uid: auth_hash["uid"])
          user.save
          flash[:success] = "Hi #{user.name}! You've signed up."
-         sign_in user
+         sign_in_ user
          redirect_back_or root_path    
        end
 
