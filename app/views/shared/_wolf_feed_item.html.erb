@@ -46,7 +46,41 @@
 
 <div class="tab-content">
   <div class="tab-pane small active" id="home<%=wolf_feed_item.id%>">
-  	home sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet home
+
+
+
+<!-- tab content example -->
+
+	<a class ="lead"> Event Details </a>
+
+	  <div class="divider"></div>
+
+
+	<span class="content"><%= wolf_feed_item.content %></span>
+	<span>Posted by <%= User.find(wolf_feed_item.user_id).name %></span>
+	<span><%= time_ago_in_words(wolf_feed_item.created_at) %> ago.</span>
+
+	<span>spreaded 
+	  <strong id="spread_count" class="stat">
+	    <%= wolf_feed_item.smokes.count %> times.
+	  </strong>
+	</span>
+
+	<br>
+
+	<a class ="lead"><small> Spreads</small> </a><br>
+	<span class="divider"></span>
+
+
+	<ol class="smokes">
+	  <%= render wolf_feed_item.smokes %>
+	</ol>
+
+	<%= will_paginate wolf_feed_item.smokes.paginate(:page => params[:page]) %>
+
+<!-- tab content example -->
+
+
   </div>
   <div class="tab-pane " id="profile<%=wolf_feed_item.id%>">
   	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
