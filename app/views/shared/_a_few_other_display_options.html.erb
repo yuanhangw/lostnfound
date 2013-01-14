@@ -1,0 +1,63 @@
+
+ <p>a few display options:</p>
+
+<!--modal -->
+ <a data-toggle="modal" href="#modal<%=wolf_feed_item.id%>" class="link">modal</a>
+
+<!--popover -->
+ <a href="#" id="popover<%=wolf_feed_item.id%>" class="link" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover">popover</a> 
+
+<a href="#" rel="tooltip" title="first tooltip">hover over me</a>
+
+
+
+<script>
+$(function ()
+{ $("#popover<%=wolf_feed_item.id%>").popover();
+});
+</script>
+
+
+<!--modal example -->
+
+<div id="modal<%=wolf_feed_item.id%>" class="modal hide fade in" style="display: none; ">  
+<div class="modal-header">  
+<a class="close" data-dismiss="modal">×</a>  
+<a class ="lead"> Event Details </a>
+</div>  
+<div class="modal-body">  
+
+
+	<span class="content"><%= wolf_feed_item.content %></span>
+	<span>Posted by <%= User.find(wolf_feed_item.user_id).name %></span>
+	<span><%= time_ago_in_words(wolf_feed_item.created_at) %> ago.</span>
+
+	<span>spreaded 
+	  <strong id="spread_count" class="stat">
+	    <%= wolf_feed_item.smokes.count %> times.
+	  </strong>
+	</span>
+
+	<br>
+
+	<a class ="lead"><small> Spreads</small> </a><br>
+	<span class="divider"></span>
+
+
+	<ol class="smokes">
+	  <%= render wolf_feed_item.smokes %>
+	</ol>
+
+	<%= will_paginate wolf_feed_item.smokes.paginate(:page => params[:page]) %>
+
+
+
+             
+</div>  
+<div class="modal-footer">  
+<a href="#" class="btn btn-success">Call to action</a>  
+<a href="#" class="btn" data-dismiss="modal">Close</a>  
+</div>  
+</div>
+
+<!--modal example -->

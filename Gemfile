@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.10'
 gem 'bootstrap-sass', '2.1'
 
+
 #to customize bootstrap
 gem 'bootswatch-rails'
 
@@ -48,6 +49,7 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.2.3'
+
 end
 
 gem 'jquery-rails', '2.0.2'

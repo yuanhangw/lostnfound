@@ -1,11 +1,92 @@
-<div class="well well-small"
-  <span class="name"><%= User.find(wolf_feed_item.user_id).name %></span>
-  <span class="content"><%= wolf_feed_item.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
-  </span>
-  <i class="icon-search"></i>
+<div class="well well-small">
+
+<!--event summary -->
+
+  <blockquote>
+  
+  <p><%= wolf_feed_item.content %></p>
+
+  <small>Posted by <i class="icon-user"></i> 
+  <%= User.find(wolf_feed_item.user_id).name %>
+  <i class="icon-time"></i>
+  <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
+  <i class="icon-fire"></i> 
+  <%= wolf_feed_item.smokers.count %> people helped to spread </small>
+  </blockquote>
+
+
+<!--event summary -->
+
+
+
+
+<div class="accordion" id="accordion<%=wolf_feed_item.id%>">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%=wolf_feed_item.id%>" href="#collapse<%=wolf_feed_item.id%>">
+        
+        Event Details  <i class="icon-search"></i>
+
+
+      </a> 
+    </div>
+    <div id="collapse<%=wolf_feed_item.id%>" class="accordion-body collapse in">
+      <div class="accordion-inner">
+
+<div class="tabbable tabs-top">
+
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#home<%=wolf_feed_item.id%>"><i class="icon-bar-chart"></i></a></li>
+  <li><a href="#profile<%=wolf_feed_item.id%>"><i class="icon-map-marker"></i></a></li>
+  <li><a href="#messages<%=wolf_feed_item.id%>"><i class="icon-briefcase"></i></a></li>
+  <li><a href="#settings<%=wolf_feed_item.id%>"><i class="icon-group"></i></a></li>
+</ul>
+
+
+
+<div class="tab-content">
+  <div class="tab-pane small active" id="home<%=wolf_feed_item.id%>">
+  	home sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet homehome sweet home
+  </div>
+  <div class="tab-pane " id="profile<%=wolf_feed_item.id%>">
+  	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
+  </div>
+  <div class="tab-pane " id="messages<%=wolf_feed_item.id%>">
+  	messages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messages
+  </div>
+  <div class="tab-pane " id="settings<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+</div>
+
  
-  <%= link_to "detail",  wolf_feed_item%> 
+
+ 
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+$('#collapse<%=wolf_feed_item.id%>').collapse("hide");
+</script>
 
 </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
