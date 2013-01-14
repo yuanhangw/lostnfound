@@ -3,7 +3,7 @@
 // using 'Cerulean' bootswatch
 //
 // First import journal variables
-//@import "bootswatch/superhero/variables";
+//@import "bootswatch/Readable/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
@@ -12,7 +12,7 @@
 @import "bootstrap-responsive";
 
 // And finally bootswatch style itself
-//@import "bootswatch/superhero/bootswatch";
+//@import "bootswatch/Readable/bootswatch";
 
 
 
@@ -45,6 +45,7 @@ section {
 textarea {
   resize: vertical;
 }
+
 
 .center {
   text-align: center;

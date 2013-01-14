@@ -11,14 +11,20 @@
   <i class="icon-time"></i>
   <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
   <i class="icon-fire"></i> 
-  <%= wolf_feed_item.smokers.count %> people helped to spread </small>
+  <%= wolf_feed_item.smokers.count %> people helped to spread 
+  </small>
   </blockquote>
 
 
 <!--event summary -->
 
+<!--event alerts-->
+<div class="alert alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Alert: e.g. root message, admin update, status update etc. broadcast to event x smoker 
+</div>
 
-
+<!--event alerts-->
 
 <div class="accordion" id="accordion<%=wolf_feed_item.id%>">
   <div class="accordion-group">
@@ -36,16 +42,24 @@
 <div class="tabbable tabs-top">
 
 <ul class="nav nav-tabs" id="myTab">
-  <li class="active"><a href="#home<%=wolf_feed_item.id%>"><i class="icon-bar-chart"></i></a></li>
-  <li><a href="#profile<%=wolf_feed_item.id%>"><i class="icon-map-marker"></i></a></li>
-  <li><a href="#messages<%=wolf_feed_item.id%>"><i class="icon-briefcase"></i></a></li>
-  <li><a href="#settings<%=wolf_feed_item.id%>"><i class="icon-group"></i></a></li>
+  <li class="active"><a href="#details<%=wolf_feed_item.id%>"><i class="icon-file-alt"></i></a></li>
+  <li><a href="#geo<%=wolf_feed_item.id%>"><i class="icon-map-marker"></i></a></li>
+  <li><a href="#image<%=wolf_feed_item.id%>"><i class="icon-camera-retro"></i></a></li>
+  <li><a href="#messages<%=wolf_feed_item.id%>"><i class="icon-comments-alt"></i></a></li>
+  <li><a href="#timeline<%=wolf_feed_item.id%>"><i class="icon-time"></i></a></li>
+  <li><a href="#team<%=wolf_feed_item.id%>"><i class="icon-group"></i></a></li>
+  <li><a href="#network<%=wolf_feed_item.id%>"><i class="icon-sitemap"></i></a></li>
+  <li><a href="#endorsement<%=wolf_feed_item.id%>"><i class="icon-heart"></i></a></li>
+  <li><a href="#reply<%=wolf_feed_item.id%>"><i class="icon-lightbulb"></i></a></li>
+  <li><a href="#validation<%=wolf_feed_item.id%>"><i class="icon-legal"></i></a></li> 
+  <li><a href="#reward<%=wolf_feed_item.id%>"><i class="icon-gift"></i></a></li>
+  <li><a href="#setting<%=wolf_feed_item.id%>"><i class="icon-cogs"></i></a></li>
 </ul>
 
 
 
 <div class="tab-content">
-  <div class="tab-pane small active" id="home<%=wolf_feed_item.id%>">
+  <div class="tab-pane small active" id="details<%=wolf_feed_item.id%>">
 
 
 
@@ -82,15 +96,49 @@
 
 
   </div>
-  <div class="tab-pane " id="profile<%=wolf_feed_item.id%>">
+  <div class="tab-pane " id="geo<%=wolf_feed_item.id%>">
   	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
   </div>
+
+  <div class="tab-pane " id="image<%=wolf_feed_item.id%>">
+  	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
+  </div>
+
   <div class="tab-pane " id="messages<%=wolf_feed_item.id%>">
   	messages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messages
   </div>
-  <div class="tab-pane " id="settings<%=wolf_feed_item.id%>">
+    <div class="tab-pane " id="timeline<%=wolf_feed_item.id%>">
+  	messages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messages
+  </div>
+
+  <div class="tab-pane " id="team<%=wolf_feed_item.id%>">
   	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
   </div>
+    <div class="tab-pane " id="network<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
+    <div class="tab-pane " id="endorsement<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
+    <div class="tab-pane " id="reply<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
+    <div class="tab-pane " id="validation<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
+
+    <div class="tab-pane " id="reward<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
+    <div class="tab-pane " id="setting<%=wolf_feed_item.id%>">
+  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
+  </div>
+
 </div>
 
  
