@@ -93,9 +93,6 @@ GEM
     ffi (1.3.1)
     formtastic (2.2.1)
       actionpack (>= 3.0)
-    handlebars (0.3.2)
-      commonjs (~> 0.2.3)
-      therubyracer (~> 0.11.1)
     has_scope (0.5.1)
     hashie (1.2.0)
     hike (1.2.1)
@@ -267,7 +264,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   faker (= 1.0.1)
   fb_graph (= 1.5.4)
-  handlebars
   jquery-rails (= 2.0.2)
   less-rails
   meta_search (>= 1.1.0.pre)
