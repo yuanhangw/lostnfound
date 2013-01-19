@@ -1,4 +1,4 @@
-<div class = "well well-small" style = "height: 700; overflow: hidden;">
+<div class = "well well-small">
 
               <!--tab-->
               <div class="tabbable tabs-top">
@@ -26,7 +26,7 @@
 
                       <div class="tab-pane small active" id="details<%=@wolf.id%>">
 
-                        <%= render partial: 'smokes/smoke', collection: @wolf.smokes%> 
+                        <%= render partial: 'smokes/smoke', collection: @wolf.smokes %>
 
                       </div>
 
@@ -44,9 +44,9 @@
                     	message
                       </div>
 
-                      <div class="tab-pane " id="timeline<%=@wolf.id%>" style =" min-height: 400px;">
+                      <div class="tab-pane " id="timeline<%=@wolf.id%>">
                     	
-                      	<%= render 'timeline'  %>
+                      	<%= render partial: 'timeline' %>
 
                       </div>
 

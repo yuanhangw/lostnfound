@@ -1,173 +1,147 @@
 <div class="well well-small">
 
-<!--event summary -->
+    <!--event summary -->
 
-  <blockquote>
-  
-  <p><%= wolf_feed_item.content %></p>
+    <blockquote>
+    
+    <p><%= wolf_feed_item.content %></p>
 
-  <small>Posted by <i class="icon-user"></i> 
-  <%= User.find(wolf_feed_item.user_id).name %>
-  <i class="icon-time"></i>
-  <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
-  <i class="icon-fire"></i> 
-  <%= wolf_feed_item.smokers.count %> people helped to spread 
-  </small>
-  </blockquote>
-
-
-<!--event summary -->
-
-<!--event alerts-->
-<div class="alert alert-info">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <i class="icon-info-sign"></i>
-  Alert: e.g. root message, admin update, status update etc. broadcast to event x smoker 
-</div>
-
-<!--event alerts-->
-
-<div class="accordion" id="accordion<%=wolf_feed_item.id%>">
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%=wolf_feed_item.id%>" href="#collapse<%=wolf_feed_item.id%>">
-        
-        Event Details  <i class="icon-search"></i>
+    <small>Posted by <i class="icon-user"></i> 
+    <%= User.find(wolf_feed_item.user_id).name %>
+    <i class="icon-time"></i>
+    <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
+    <i class="icon-fire"></i> 
+    <%= wolf_feed_item.smokers.count %> people helped to spread 
+    </small>
+    </blockquote>
 
 
-      </a> 
+    <!--event summary -->
+
+    <!--event alerts-->
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <i class="icon-info-sign"></i>
+      Alert: e.g. root message, admin update, status update etc. broadcast to event x smoker 
     </div>
-    <div id="collapse<%=wolf_feed_item.id%>" class="accordion-body collapse in">
-      <div class="accordion-inner">
 
-<div class="tabbable tabs-top">
+    <!--event alerts-->
 
-<ul class="nav nav-tabs" id="myTab">
-  <li class="active"><a href="#details<%=wolf_feed_item.id%>"><i class="icon-file-alt"></i></a></li>
-  <li><a href="#geo<%=wolf_feed_item.id%>"><i class="icon-map-marker"></i></a></li>
-  <li><a href="#image<%=wolf_feed_item.id%>"><i class="icon-camera-retro"></i></a></li>
-  <li><a href="#messages<%=wolf_feed_item.id%>"><i class="icon-comments-alt"></i></a></li>
-  <li><a href="#timeline<%=wolf_feed_item.id%>"><i class="icon-time"></i></a></li>
-  <li><a href="#team<%=wolf_feed_item.id%>"><i class="icon-group"></i></a></li>
-  <li><a href="#network<%=wolf_feed_item.id%>"><i class="icon-sitemap"></i></a></li>
-  <li><a href="#endorsement<%=wolf_feed_item.id%>"><i class="icon-heart"></i></a></li>
-  <li><a href="#reply<%=wolf_feed_item.id%>"><i class="icon-lightbulb"></i></a></li>
-  <li><a href="#validation<%=wolf_feed_item.id%>"><i class="icon-legal"></i></a></li> 
-  <li><a href="#reward<%=wolf_feed_item.id%>"><i class="icon-gift"></i></a></li>
-  <li><a href="#setting<%=wolf_feed_item.id%>"><i class="icon-cogs"></i></a></li>
-</ul>
+    <!--accordion-->
+    <div class="accordion" id="accordion<%=wolf_feed_item.id%>">
 
+      <!--accordion-group-->
+      <div class="accordion-group">
 
+        <!--accordion-heading -->
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%=wolf_feed_item.id%>" href="#collapse<%=wolf_feed_item.id%>">
+            Event Details  <i class="icon-search"></i>
+          </a> 
+        </div><!--accordion-heading end-->
 
-<div class="tab-content">
-  <div class="tab-pane small active" id="details<%=wolf_feed_item.id%>">
+        <!--accordion-body-->
+        <div id="collapse<%=wolf_feed_item.id%>" class="accordion-body collapse in">
+          
+          <!--accordion-inner-->
+          <div class="accordion-inner">
 
+              <!--tab-->
+              <div class="tabbable tabs-top">
 
-
-<!-- tab content example -->
-
-	<a class ="lead"> Event Details </a>
-
-	  <div class="divider"></div>
-
-
-	<span class="content"><%= wolf_feed_item.content %></span>
-	<span>Posted by <%= User.find(wolf_feed_item.user_id).name %></span>
-	<span><%= time_ago_in_words(wolf_feed_item.created_at) %> ago.</span>
-
-	<span>spreaded 
-	  <strong id="spread_count" class="stat">
-	    <%= wolf_feed_item.smokes.count %> times.
-	  </strong>
-	</span>
-
-	<br>
-
-	<a class ="lead"><small> Spreads</small> </a><br>
-	<span class="divider"></span>
-
-
-	<ol class="smokes">
-	  <%= render wolf_feed_item.smokes %>
-	</ol>
-
-	<%= will_paginate wolf_feed_item.smokes.paginate(:page => params[:page]) %>
-
-<!-- tab content example -->
-
-
-  </div>
-  <div class="tab-pane " id="geo<%=wolf_feed_item.id%>">
-  	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
-  </div>
-
-  <div class="tab-pane " id="image<%=wolf_feed_item.id%>">
-  	profile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profileprofile long profile
-  </div>
-
-  <div class="tab-pane " id="messages<%=wolf_feed_item.id%>">
-  	messages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messages
-  </div>
-    <div class="tab-pane " id="timeline<%=wolf_feed_item.id%>">
-  	messages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messagesmessages enigmatic messages
-  </div>
-
-  <div class="tab-pane " id="team<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-    <div class="tab-pane " id="network<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-    <div class="tab-pane " id="endorsement<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-    <div class="tab-pane " id="reply<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-    <div class="tab-pane " id="validation<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-
-    <div class="tab-pane " id="reward<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-    <div class="tab-pane " id="setting<%=wolf_feed_item.id%>">
-  	settings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere ssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settingssettings anywhere settings
-  </div>
-
-</div>
-
- 
-
- 
-<script>
-$('#myTab a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
-
-$('#collapse<%=wolf_feed_item.id%>').collapse("hide");
-</script>
-
-</div>
+                  <!--tab nav-tab -->
+                  <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#details<%=wolf_feed_item.id%>"><i class="icon-file-alt"></i></a></li>
+                    <li><a href="#geo<%=wolf_feed_item.id%>"><i class="icon-map-marker"></i></a></li>
+                    <li><a href="#image<%=wolf_feed_item.id%>"><i class="icon-camera-retro"></i></a></li>
+                    <li><a href="#messages<%=wolf_feed_item.id%>"><i class="icon-comments-alt"></i></a></li>
+                    <li><a href="#timeline<%=wolf_feed_item.id%>"><i class="icon-time"></i></a></li>
+                    <li><a href="#team<%=wolf_feed_item.id%>"><i class="icon-group"></i></a></li>
+                    <li><a href="#network<%=wolf_feed_item.id%>"><i class="icon-sitemap"></i></a></li>
+                    <li><a href="#endorsement<%=wolf_feed_item.id%>"><i class="icon-heart"></i></a></li>
+                    <li><a href="#reply<%=wolf_feed_item.id%>"><i class="icon-lightbulb"></i></a></li>
+                    <li><a href="#validation<%=wolf_feed_item.id%>"><i class="icon-legal"></i></a></li> 
+                    <li><a href="#reward<%=wolf_feed_item.id%>"><i class="icon-gift"></i></a></li>
+                    <li><a href="#setting<%=wolf_feed_item.id%>"><i class="icon-cogs"></i></a></li>
+                  </ul><!--tab nav-tab end-->
 
 
 
+                  <!--tab content -->
+                  <div class="tab-content">
 
-      </div>
-    </div>
-  </div>
-</div>
+                      <div class="tab-pane small active" id="details<%=wolf_feed_item.id%>">
+
+                        <%= render partial: 'smokes/smoke', collection: wolf_feed_item.smokes %>
+
+                      </div>
 
 
 
+                      <div class="tab-pane" id="geo<%=wolf_feed_item.id%>">
+                    	geo
+                      </div>
+
+                      <div class="tab-pane " id="image<%=wolf_feed_item.id%>">
+                      image
+                      </div>
+
+                      <div class="tab-pane " id="messages<%=wolf_feed_item.id%>">
+                    	message
+                      </div>
+
+                      <div class="tab-pane " id="timeline<%=wolf_feed_item.id%>">
+                    	timeline
+                      </div>
+
+                      <div class="tab-pane " id="team<%=wolf_feed_item.id%>">
+                    	team
+                      </div>
+
+                      <div class="tab-pane " id="network<%=wolf_feed_item.id%>">
+                    	network
+                      </div>
+
+                      <div class="tab-pane " id="endorsement<%=wolf_feed_item.id%>">
+                    	endorsement
+                      </div>
+
+                      <div class="tab-pane " id="reply<%=wolf_feed_item.id%>">
+                    	reply
+                      </div>
+
+                      <div class="tab-pane " id="validation<%=wolf_feed_item.id%>">
+                    	validation
+                      </div>
 
 
+                      <div class="tab-pane " id="reward<%=wolf_feed_item.id%>">
+                    	reward
+                      </div>
+
+                      <div class="tab-pane " id="setting<%=wolf_feed_item.id%>">
+                    	setting
+                      </div>
+                  </div><!--tab content end-->
+               
+                  <script>
+                      $('#myTab a').click(function (e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                      })
+
+                      $('#collapse<%=wolf_feed_item.id%>').collapse("hide");
+                  </script>
+
+              </div><!--tab end -->
+          </div><!--accordion-inner end-->
+
+        </div><!--accordion-body end-->
+
+      </div><!--accordion-group end-->
+
+    </div><!--accordion end-->
+    
 
 </div>
 

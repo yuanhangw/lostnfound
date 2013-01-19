@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      sign_in @user
+      sign_in_ @user
       flash[:success] = "Welcome! we are now connected to the matrix"
       redirect_back_or root_path
     else

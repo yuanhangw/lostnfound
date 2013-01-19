@@ -1,16 +1,17 @@
-<li>
-    <span>
-      <%= User.find(smoke.user_id).name %> 
-      spreaded from <%= User.find(smoke.parent_user_id).name %>
-    </span>
-    <span class="timestamp">
-        <%= time_ago_in_words(smoke.created_at) %> ago.
-    </span>
-    <br>
-    <span>
-        url_token: <%= smoke.url_token %>
-    </span>
-    <% if signed_in? && !current_user.smoked?(smoke.wolf) %>
-      <%= render 'shared/smoke_form', :smoke => smoke %>
-    <% end %>
-</li>
+  
+
+    <div class="item post">
+      <div class="inner">
+        <div class="timestamp"> <%=smoke.created_at %> </div>
+        <div class="time"> <%=smoke.created_at.strftime("%H:%M:%S") %> </div>
+        <div class="timeago">spreaded <%= time_ago_in_words(smoke.created_at) %> ago.</div>
+
+        <div class="body">
+          <div class="token">url_token: <%= smoke.url_token %></div>
+          <div class="parent">from <%= User.find(smoke.parent_user_id).name %></div>
+          <div class="smoker">by <%= User.find(smoke.user_id).name %></div>
+          <div class="url"> smokes/<%= smoke.id %></div>
+        </div>
+      </div>
+    </div>
+
