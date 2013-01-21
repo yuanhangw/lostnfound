@@ -28,7 +28,7 @@ class WolvesController < ApplicationController
       
       end
 
-      flash[:success] = "verification code: eureka" #"Event created! posted to  t/f,  Link: #{smoke_path(@smoke)}"
+      flash[:success] = "Event created! posted to  t/f,  Link: #{smoke_path(@smoke)}"
       redirect_to root_path
       # add post to social media instead of included link in the flash
     else
