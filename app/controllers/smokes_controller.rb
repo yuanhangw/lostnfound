@@ -1,6 +1,7 @@
 class SmokesController < ApplicationController
   before_filter :signed_in_user  
 
+
   def new
   end
 
@@ -31,6 +32,7 @@ class SmokesController < ApplicationController
       flash[:sucess] = "Event Spreaded! posted to f/t,  Link: #{smoke_path(@smoke)}"
     else
     end
+
 #    @wolf = @smoke.wolf
 #    respond_to do |format|
 #      format.html { redirect_to @smoke.wolf }
@@ -49,6 +51,8 @@ class SmokesController < ApplicationController
     end
 
   end
+
+
 
     private
 

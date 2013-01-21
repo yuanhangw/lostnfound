@@ -1,8 +1,13 @@
 class Smoke < ActiveRecord::Base
-  attr_accessible :parent_user_id, :user_id, :wolf_id
+  attr_accessible :parent_user_id, :parent_id, :user_id, :wolf_id
   
   belongs_to :user, :class_name => "User"
   belongs_to :wolf, :class_name => "Wolf"
+
+
+  has_many :children, :class_name => "Smoke",
+    :foreign_key => "parent_id"
+  belongs_to :parent, :class_name => "Smoke"
 
   before_save :create_url_token
  

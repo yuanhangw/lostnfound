@@ -1,8 +1,10 @@
-<%= form_for(current_user.smokes.build(:user_id => current_user.id, :wolf_id => @wolf.id, :parent_user_id => @smoke.user_id)) do |f| %>
+<%= form_for(current_user.smokes.build(:user_id => current_user.id, :wolf_id => @wolf.id, :parent_user_id => @smoke.user_id, :parent_id => @smoke.id)) do |f| %>
   <div>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :wolf_id %>
     <%= f.hidden_field :parent_user_id %>
+    <%= f.hidden_field :parent_id %>
+
   </div>
   <%= f.submit "Spread", :class => "btn btn-small btn-danger pull-right" %>
 <% end %>

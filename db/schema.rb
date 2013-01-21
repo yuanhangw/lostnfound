@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114144713) do
+ActiveRecord::Schema.define(:version => 20130121142716) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(:version => 20130114144713) do
     t.string   "url_token"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "parent_id"
   end
 
+  add_index "smokes", ["parent_id"], :name => "index_smokes_on_parent_id"
   add_index "smokes", ["parent_user_id"], :name => "index_smokes_on_parent_user_id"
   add_index "smokes", ["url_token"], :name => "index_smokes_on_url_token", :unique => true
   add_index "smokes", ["user_id", "wolf_id"], :name => "index_smokes_on_user_id_and_wolf_id", :unique => true
