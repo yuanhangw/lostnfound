@@ -265,6 +265,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   fb_graph (= 1.5.4)
   jquery-rails (= 2.0.2)
+  json
   less-rails
   meta_search (>= 1.1.0.pre)
   omniauth
