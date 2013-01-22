@@ -33,8 +33,7 @@
 
 
                       <div class="tab-pane" id="geo<%=@wolf.id%>">
-                    	  <%= smoke_tree = Smoke.find(:first, :conditions => ["parent_id IS NULL and wolf_id = #{@wolf.id}"]).to_node.to_json%>
-                        <% JSON.parse(smoke_tree)%>
+                    	  geo
                       </div>
 
                       <div class="tab-pane " id="image<%=@wolf.id%>">
@@ -52,11 +51,13 @@
                       </div>
 
                       <div class="tab-pane " id="team<%=@wolf.id%>">
-                    	team
+                    	
+                       team
                       </div>
 
                       <div class="tab-pane " id="network<%=@wolf.id%>">
-                    	network
+
+                    	  <%= render 'network'%>
                       </div>
 
                       <div class="tab-pane " id="endorsement<%=@wolf.id%>">
