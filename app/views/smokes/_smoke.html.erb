@@ -8,9 +8,10 @@
 
         <div class="body">
           <div class="token">url_token: <%= smoke.url_token %></div>
-          <div class="parent">from <%= User.find(smoke.parent_user_id).name %></div>
-          <div class="smoker">by <%= User.find(smoke.user_id).name %></div>
-          <div class="url"> smokes/<%= smoke.id %></div>
+          <div class="parent">from <%= smoke.parent_user.name %></div>
+          <div class="smoker">by <%= smoke.user.name %></div>
+<!-- url updated by simon. now we can mask the actual smoke id -->
+          <div class="url"><%= URI.parse(url_for(:only_path => false)).host + "/spread/" + smoke.url_token %></div>
         </div>
       </div>
     </div>

@@ -41,9 +41,10 @@ class SmokesController < ApplicationController
   end
 
   def show
-     @smoke = Smoke.find(params[:id])
-     @wolf =@smoke.wolf
-     @user = User.new
+#     @smoke = Smoke.find(params[:id])
+    @smoke = Smoke.find_by_url_token(params[:token])
+    @wolf =@smoke.wolf
+    @user = User.new
 
     if signed_in?
       @wolf_feed_items = current_user.wolf_feed.paginate(page: params[:page])

@@ -38,6 +38,8 @@ Dandelion::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :wolves,   :only => [:create, :destroy, :index, :show]
   resources :smokes
+  resources :shoots
+  resources :praises
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -97,6 +99,8 @@ Dandelion::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy', :via => :delete
   match '/events', :to => 'wolves#index'
   match '/event', :to => 'wolves#show'  
+  match '/spread/:token', :to => 'smokes#show', :via => :get
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

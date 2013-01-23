@@ -1,0 +1,11 @@
+<%= form_for(current_user.shoots.build(:user_id => current_user.id, :smoke_id => smoke.id)) do |f| %>
+  <div>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :smoke_id %>
+    <div class="field">
+      <%= f.text_area :content, :placeholder => "Compose answer..." %>
+    </div>
+  </div>
+  <%= f.submit "Answer", :class => "btn btn-large btn-primary" %>
+<% end %>
+

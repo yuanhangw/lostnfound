@@ -1,5 +1,9 @@
 rails generate migration add_idstr_to_user idstr:string
 
+Config
+- route.rb
+  - add route for smoke with url_token: /spread:url_token
+
 Migration
 - added single migration file to run
 

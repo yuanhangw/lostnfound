@@ -1,13 +1,20 @@
 class User < ActiveRecord::Base
+  IDSTR_LEN = 7
+
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
   has_many :wolves, :dependent => :destroy
   has_many :smokes, :foreign_key => "user_id", :dependent => :destroy
   has_many :smoked_wolves, :through => :smokes, :source => :wolf
+  has_many :shoots, :foreign_key => "user_id", :dependent => :destroy
+  has_many :shot_wolves, :through => :shoots, :source => :wolf
+  has_many :praises, :foreign_key => "user_id", :dependent => :destroy
+  has_many :praised_shoots, :through => :praises, :source => :shoot
   has_many :authorizations, :dependent => :destroy
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
+  before_save :create_idstr
 
   validates :name, :presence => true, :length => { :maximum => 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -17,6 +24,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                        :length => { :minimum => 6}
   validates :password_confirmation, :presence => true
+  validates :idstr, :uniqueness => true
 
   def smoked?(wolf)
     smokes.find_by_user_id_and_wolf_id(self.id, wolf.id)
@@ -54,6 +62,13 @@ class User < ActiveRecord::Base
       self.remember_token = SecureRandom.hex
     end
 
+    def create_idstr
+      begin
+        token = rand(36**IDSTR_LEN).to_s(36)
+        token = '0'*(IDSTR_LEN-token.length) + token;
+      end while User.find_by_idstr(token)!=nil
+      self.idstr = token
+    end
 
 
 end
