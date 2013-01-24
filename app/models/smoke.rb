@@ -19,7 +19,7 @@ class Smoke < ActiveRecord::Base
 
     def to_node
     #self.attributes.merge({:user_name => User.find(self.user_id).name, :children => self.children.map { |c| c.to_node }})
-    self.attributes.merge({:user_name => User.find(self.user_id).name, :children => self.children.map { |c| c.to_node }})
+    self.children.empty? ? self.attributes.merge({:user_name => User.find(self.user_id).name}) :  self.attributes.merge({:user_name => User.find(self.user_id).name, :children => self.children.map { |c| c.to_node }})
     end
 
 
