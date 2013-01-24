@@ -14,7 +14,7 @@
   <p><%= @smoke.wolf.content %></p>
 
   <small>Posted by <i class="icon-user"></i> 
-  <%= smoke.wolf.user.name %>
+  <%= @smoke.wolf.user.name %>
   <i class="icon-time"></i>
   <%= time_ago_in_words(@smoke.wolf.created_at) %> ago.
   <i class="icon-fire"></i> 
@@ -27,7 +27,7 @@
 
     <p>
       <small> <i class="icon-user"></i> 
-      <span class="label label-success"><%= smoke.user.name %></span>
+      <span class="label label-success"><%= @smoke.user.name %></span>
       asked for your help to spread the question
       <span class="timestamp">
         <%= time_ago_in_words(@smoke.created_at) %> ago.</small>

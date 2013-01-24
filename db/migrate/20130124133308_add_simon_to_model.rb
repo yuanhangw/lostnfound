@@ -2,6 +2,7 @@ class AddSimonToModel < ActiveRecord::Migration
   def change
     # change user
     add_column :users, :idstr, :string
+    # added to hack around a sqlite bug
     change_column :users, :idstr, :string, :null => false
 
     add_index  :users, :idstr, :unique => true
@@ -32,6 +33,7 @@ class AddSimonToModel < ActiveRecord::Migration
 
     # change smokes
     add_column :smokes, :user_idstr_chain, :text
+    # added to hack around a sqlite bug
     change_column :smokes, :user_idstr_chain, :text, :null => false
     add_index :smokes, :user_idstr_chain, :length => 1000
     add_index :smokes, [:wolf_id, :user_idstr_chain], :unique= => true, :length => {:user_idstr_chain => 1000 }
