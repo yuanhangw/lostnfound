@@ -1,0 +1,40 @@
+rails generate migration add_idstr_to_user idstr:string
+
+Config
+- route.rb
+  - add route for smoke with url_token: /spread:url_token
+
+Migration
+- added single migration file to run
+
+
+Models
+- user
+  - add constent field IDSTR_LEN
+  - add function create_idstr
+- smoke
+  - add before_save :create_user_idstr_chain
+  - add function level
+  - add function parent_smoke
+  - add function create_user_idstr_chain for building tree path on smoke creation
+  - add function user_chain, getting array of users from string representation
+  - add function descendents_all_user_ids
+  - add function descendents_by_level_user_ids
+- shoot newly added
+- praise newly added
+
+
+Controllers
+- smoke
+  - add "show"
+- shoot newly added
+- praise newly added
+
+Views
+- smoke
+  - add show.html.erb
+    - generate spread url within html (couldn't do it as a smoke model function)
+- shared
+  - add _shoot_form.html.erb
+- missing: _praise form, shoot and praise show/render
+

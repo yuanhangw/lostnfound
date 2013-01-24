@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121142716) do
+ActiveRecord::Schema.define(:version => 20130124133308) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,14 +56,39 @@ ActiveRecord::Schema.define(:version => 20130121142716) do
     t.string   "secret"
   end
 
+  create_table "praises", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "shoot_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "praises", ["shoot_id"], :name => "index_praises_on_shoot_id"
+  add_index "praises", ["user_id", "shoot_id"], :name => "index_praises_on_user_id_and_shoot_id", :unique => true
+  add_index "praises", ["user_id"], :name => "index_praises_on_user_id"
+
+  create_table "shoots", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "smoke_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "shoots", ["smoke_id"], :name => "index_shoots_on_smoke_id"
+  add_index "shoots", ["user_id", "smoke_id"], :name => "index_shoots_on_user_id_and_smoke_id"
+  add_index "shoots", ["user_id"], :name => "index_shoots_on_user_id"
+
   create_table "smokes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "wolf_id"
     t.integer  "parent_user_id"
     t.string   "url_token"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "parent_id"
+    t.text     "user_idstr_chain", :null => false
   end
 
   add_index "smokes", ["parent_id"], :name => "index_smokes_on_parent_id"
@@ -71,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20130121142716) do
   add_index "smokes", ["url_token"], :name => "index_smokes_on_url_token", :unique => true
   add_index "smokes", ["user_id", "wolf_id"], :name => "index_smokes_on_user_id_and_wolf_id", :unique => true
   add_index "smokes", ["user_id"], :name => "index_smokes_on_user_id"
+  add_index "smokes", ["user_idstr_chain"], :name => "index_smokes_on_user_idstr_chain"
+  add_index "smokes", ["wolf_id", "user_idstr_chain"], :name => "index_smokes_on_wolf_id_and_user_idstr_chain"
   add_index "smokes", ["wolf_id"], :name => "index_smokes_on_wolf_id"
 
   create_table "users", :force => true do |t|
@@ -81,9 +108,11 @@ ActiveRecord::Schema.define(:version => 20130121142716) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "idstr",                              :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["idstr"], :name => "index_users_on_idstr", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
   create_table "wolves", :force => true do |t|
