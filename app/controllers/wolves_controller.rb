@@ -28,7 +28,7 @@ class WolvesController < ApplicationController
       
       end
 
-      flash[:success] = "Event created! posted to  t/f,  Link: #{smoke_path(@smoke)}"
+      flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
       redirect_to root_path
       # add post to social media instead of included link in the flash
     else

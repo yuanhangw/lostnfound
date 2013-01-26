@@ -3,7 +3,7 @@ class Shoot < ActiveRecord::Base
   
   belongs_to :user, :class_name => "User"
   belongs_to :smoke, :class_name => "Smoke"
-  has_one :wolf, :through => :smokes
+  has_one :wolf, :through => :smoke
   has_many :praises, :foreign_key => "shoot_id"
   has_many :praisers, :through => :praises, :source => :user
 

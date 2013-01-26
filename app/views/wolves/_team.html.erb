@@ -24,6 +24,9 @@ path.link {
 
 <div class="team">
 	hello world
+
+<%= Smoke.find(:first, :conditions => ["parent_id IS NULL and wolf_id = #{@wolf.id}"]).to_node.to_json%>
+
 </div>
 
 
@@ -65,7 +68,7 @@ var root = <%= raw Smoke.find(:first, :conditions => ["parent_id IS NULL and wol
     }
   }
 
-  root.children.forEach(collapse);
+  //root.children.forEach(collapse);
 
   
   update(root);

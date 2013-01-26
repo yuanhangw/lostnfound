@@ -18,7 +18,7 @@
   <i class="icon-time"></i>
   <%= time_ago_in_words(@smoke.wolf.created_at) %> ago.
   <i class="icon-fire"></i> 
-  <%= @smoke.wolf.smokers.count %> people helped to spread </small>
+  <%= @smoke.wolf.smokers.count %> people helped to spread: <%= @smoke.descendents_all_user_ids  %>  </small>
   </blockquote>
 
 
@@ -41,5 +41,6 @@
 
     <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
       <%= render 'shared/another_smoke_form', :smoke => @smoke %>
+      <%= render 'shared/shoot', :smoke => @smoke %>
     <% end %>
 

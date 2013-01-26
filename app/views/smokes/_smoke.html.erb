@@ -10,7 +10,7 @@
           <div class="token">url_token: <%= smoke.url_token %></div>
           <div class="parent">from <%= smoke.parent_user.name %></div>
           <div class="smoker">by <%= smoke.user.name %></div>
-<!-- url updated by simon. now we can mask the actual smoke id -->
+          <!-- url updated by simon. now we can mask the actual smoke id -->
           <div class="url"><%= URI.parse(url_for(:only_path => false)).host + "/spread/" + smoke.url_token %></div>
         </div>
       </div>

@@ -99,14 +99,12 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: $grayLight;
 }
@@ -283,4 +281,14 @@ input {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+
+/* hero unit */
+
+.hero-unit {
+  text-align: left;
+  text-shadow:2px -2px 4px white;
+
+
 }

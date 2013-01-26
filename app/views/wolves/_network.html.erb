@@ -22,6 +22,8 @@
 
 <div class="network">
 <p>hello world</p>
+<%= raw Smoke.find(:first, :conditions => ["parent_id IS NULL and wolf_id = #{@wolf.id}"]).to_node.to_json%>
+
 </div>
 
 <script>

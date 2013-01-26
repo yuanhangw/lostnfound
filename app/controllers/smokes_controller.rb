@@ -29,7 +29,7 @@ class SmokesController < ApplicationController
       end
 
 
-      flash[:sucess] = "Event Spreaded! posted to f/t,  Link: #{smoke_path(@smoke)}"
+      flash[:sucess] = "Event Spreaded! posted to f/t,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
     else
     end
 
