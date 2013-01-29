@@ -1,0 +1,44 @@
+
+/**
+ * List used for the demo page
+ */
+.coolscroll ul {
+	position: relative;
+
+	height: 640px;
+	margin: 0;
+	padding: 10px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	list-style: none;
+
+	-webkit-perspective: 400px;
+	   -moz-perspective: 400px;
+	    -ms-perspective: 400px;
+	     -o-perspective: 400px;
+	        perspective: 400px;
+}
+.coolscroll	ul li {
+		position: relative;
+		padding: 16px;
+		background: #eee;
+		color: #252525;
+		font-size: 12px;
+		z-index: 2;
+
+		-webkit-transform: translateZ(0px);
+		   -moz-transform: translateZ(0px);
+		    -ms-transform: translateZ(0px);
+		     -o-transform: translateZ(0px);
+		        transform: translateZ(0px);
+	}
+.coolscroll	ul li:nth-child(odd) {
+		background: #fff;
+	}
+
+.coolscroll ul li:hover {
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	}	
+

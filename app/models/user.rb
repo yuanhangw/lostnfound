@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     smokes.create!(:wolf_id => wolf.id)
   end
 
+  def shooted?(smoke)
+    shoots.find_by_user_id_and_smoke_id(self.id, smoke.id)
+  end
+
   def wolf_feed
   
     self.smoked_wolves

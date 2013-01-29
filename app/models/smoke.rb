@@ -23,6 +23,10 @@ class Smoke < ActiveRecord::Base
     self.children.empty? ? self.attributes.merge({:user_name => User.find(self.user_id).name}) :  self.attributes.merge({:user_name => User.find(self.user_id).name, :children => self.children.map { |c| c.to_node }})
     end
 
+  #added by alex to get a list of shoots from current_user smoke to below
+  def descendents_shoot
+    Shoot.where(:user_id => self.parent_user.id, :wolf_id => self.wolf.id).first
+  end
 
   def level
     self.user_idstr_chain.length / User::IDSTR_LEN

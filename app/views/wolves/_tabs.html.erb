@@ -1,0 +1,93 @@
+
+              <!--tab-->
+              <div class="tabbable tabs-right">
+
+                  <!--tab nav-tab -->
+                  <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#details<%=@wolf.id%>"><i class="icon-file-alt"></i> details</a></li>
+                    <li><a href="#geo<%=@wolf.id%>"><i class="icon-map-marker"> geo</i></a></li>
+                    <li><a href="#image<%=@wolf.id%>"><i class="icon-camera-retro"> images</i></a></li>
+                    <li><a href="#messages<%=@wolf.id%>"><i class="icon-comments-alt"> meesages</i></a></li>
+                    <li><a href="#timeline<%=@wolf.id%>"><i class="icon-time"></i> timeline</a></li>
+                    <li><a href="#team<%=@wolf.id%>"><i class="icon-group"></i> team</a></li>
+                    <li><a href="#network<%=@wolf.id%>"><i class="icon-sitemap"></i> network</a></li>
+                    <li><a href="#endorsement<%=@wolf.id%>"><i class="icon-heart"></i> endorsement</a></li>
+                    <li><a href="#reply<%=@wolf.id%>"><i class="icon-lightbulb"></i> reply</a></li>
+                    <li><a href="#validation<%=@wolf.id%>"><i class="icon-legal"></i> validation</a></li> 
+                    <li><a href="#reward<%=@wolf.id%>"><i class="icon-gift"></i> reward</a></li>
+                    <li><a href="#setting<%=@wolf.id%>"><i class="icon-cogs"></i> setting</a></li>
+                  </ul><!--tab nav-tab end-->
+
+
+
+                  <!--tab content -->
+                  <div class="tab-content">
+
+                      <div class="tab-pane small active" id="details<%=@wolf.id%>">
+
+                        <%= render partial: 'smokes/smoke', collection: @wolf.smokes%> 
+
+                      </div>
+
+
+
+                      <div class="tab-pane" id="geo<%=@wolf.id%>">
+                    	  geo
+                      </div>
+
+                      <div class="tab-pane " id="image<%=@wolf.id%>">
+                      image
+                      </div>
+
+                      <div class="tab-pane " id="messages<%=@wolf.id%>">
+                    	message
+                      </div>
+
+                      <div class="tab-pane " id="timeline<%=@wolf.id%>" style =" min-height: 400px;">
+                    	 <%= render 'timeline'  %>
+
+                      </div>
+
+                      <div class="tab-pane " id="team<%=@wolf.id%>">
+                    	 <%= render 'team'%>
+                      </div>
+
+                      <div class="tab-pane " id="network<%=@wolf.id%>">
+
+                    	  <%= render 'network'%>
+                      </div>
+
+                      <div class="tab-pane " id="endorsement<%=@wolf.id%>">
+                    	endorsement
+                      </div>
+
+                      <div class="tab-pane " id="reply<%=@wolf.id%>">
+                    	reply
+                      </div>
+
+                      <div class="tab-pane " id="validation<%=@wolf.id%>">
+                    	validation
+                      </div>
+
+
+                      <div class="tab-pane " id="reward<%=@wolf.id%>">
+                    	reward
+                      </div>
+
+                      <div class="tab-pane " id="setting<%=@wolf.id%>">
+                    	setting
+                      </div>
+                  </div><!--tab content end-->
+               
+                  <script>
+                      $('#myTab a').click(function (e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                      })
+
+                  </script>
+
+              </div><!--tab end -->
+
+
+

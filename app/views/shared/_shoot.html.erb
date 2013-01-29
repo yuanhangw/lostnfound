@@ -3,9 +3,24 @@
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :smoke_id %>
     <div class="field">
-      <%= f.text_area :content, :placeholder => "Compose answer..." %>
+      <%= f.text_area :content, :placeholder => "I have the answer !!!"%>
     </div>
   </div>
-  <%= f.submit "Answer", :class => "btn btn-large btn-primary" %>
+  <%= f.submit "Answer", :class => "btn btn-small btn-success shoot_submit pull-right" %>
 <% end %>
 
+
+<script>
+
+   $('textarea').focus(function() {
+     $(this).closest('form').find('input[type="submit"]').show();
+     $('textarea').animate({height: "8em"}, 750);
+   });
+
+   // $('textarea').blur(function() {
+   //   $(this).closest('form').find('input[type="submit"]').show();
+   //   $('textarea').animate({height: "3em"}, 750);
+   // });
+
+
+</script>

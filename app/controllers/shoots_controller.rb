@@ -7,7 +7,7 @@ class ShootsController < ApplicationController
   def create
     @shoot = Shoot.new(params[:shoot])
     @shoot.save!
-    redirect_to @shoot.wolf 
+    redirect_to(:back) 
   end
 
   def edit

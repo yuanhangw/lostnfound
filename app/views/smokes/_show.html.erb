@@ -1,12 +1,29 @@
-
   <legend>
-      <a class ="lead"> Help to spread a question </a><br> 
-      <small>Why should I do it 
-      </small><code>?</code>
+      <a class ="lead"> Q & A </a><br> 
 
   </legend>
 
-  <div class="divider"></div>
+<div class="divider"></div>
+
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+      
+      <i class="icon-user"></i> 
+      <span class="label label-success"><%= @smoke.user.name %></span>
+      asked for your help to answer the question from <span class="label label-success"><%= @smoke.wolf.user.name %></span>
+      <small> 
+      <span class="timestamp">
+        <%= time_ago_in_words(@smoke.created_at) %> ago.</span>
+      </small>
+
+      <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
+        <%= render 'shared/another_smoke_form', :smoke => @smoke %>
+      <% else %>
+        <p> <code> you spreaded the question <%= time_ago_in_words(current_user.smoked?(@smoke.wolf).created_at)%> ago </code></p>
+      <% end %>
+
+</div>
 
 
   <blockquote>
@@ -21,26 +38,12 @@
   <%= @smoke.wolf.smokers.count %> people helped to spread: <%= @smoke.descendents_all_user_ids  %>  </small>
   </blockquote>
 
-
-<div class="alert alert-success">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-
-    <p>
-      <small> <i class="icon-user"></i> 
-      <span class="label label-success"><%= @smoke.user.name %></span>
-      asked for your help to spread the question
-      <span class="timestamp">
-        <%= time_ago_in_words(@smoke.created_at) %> ago.</small>
-    </p>
-</div>
-
-<span>
-<code>URL here? unncessary</code>
-</span>
+  <% if signed_in? && !current_user.shooted?(@smoke) %>
+        <%= render 'shared/shoot', :smoke => @smoke %>
+  <% else %>
+       <p> <code> you answered the question <%= time_ago_in_words(current_user.shooted?(@smoke).created_at)%> ago </code></p>
+  <% end %>
 
 
-    <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
-      <%= render 'shared/another_smoke_form', :smoke => @smoke %>
-      <%= render 'shared/shoot', :smoke => @smoke %>
-    <% end %>
+      
 

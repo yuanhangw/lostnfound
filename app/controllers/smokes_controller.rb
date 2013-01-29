@@ -8,7 +8,7 @@ class SmokesController < ApplicationController
   def create
     @smoke = Smoke.new(params[:smoke])
     @smoke.save!
-    redirect_to root_path
+    redirect_to(:back)
     if @smoke.save
 
       unless current_user.authorizations.find_by_provider("twitter").nil?
@@ -48,6 +48,7 @@ class SmokesController < ApplicationController
 
     if signed_in?
       @wolf_feed_items = current_user.wolf_feed.paginate(page: params[:page])
+      @shoot_feed_items = @smoke.shoots
     else
     end
 

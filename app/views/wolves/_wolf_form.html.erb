@@ -1,4 +1,4 @@
-            <div class ="well well-small">
+            <div class ="well well-small wolf-list">
                 
 
               <%= form_for(@wolf) do |f| %>
@@ -7,7 +7,7 @@
 
                         <legend>
                             <a class ="lead"> Ask a question </a><br> 
-                            <small>and plug into the matrix 
+                            <small>and get answer from friend's friends
                             </small><code>?</code>
 
                         </legend>
@@ -15,12 +15,27 @@
                         <div class="divider"></div>
 
                   <div class="field">
-				          <%= f.text_area :content, placeholder: "too big!" %>
+				          <%= f.text_area :content, placeholder: "喊一嗓子" %>
 				          </div>
 
                   <code><%= link_to "URL to this event?", event_path %></code>
 
-                <%= f.submit "Ask", class: "btn btn-primary btn-success pull-right" %>
+                <%= f.submit "Ask", class: "btn btn-primary btn-success wolf_submit pull-right" %>
               <% end %>
                 
             </div>
+
+  <script>
+
+   $('textarea').focus(function() {
+     $(this).closest('form').find('input[type="submit"]').show();
+     $('textarea').animate({height: "10em"}, 750);
+   });
+
+   // $('textarea').blur(function() {
+   //   $(this).closest('form').find('input[type="submit"]').show();
+   //   $('textarea').animate({height: "3em"}, 750);
+   // });
+
+
+</script>

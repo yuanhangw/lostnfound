@@ -1,9 +1,24 @@
 <% if @wolf_feed_items.any? %>
 
-  <ol class="events">
+  <legend>
+      <a class ="lead"> Event Feed </a><br> 
+
+  </legend>
+
+  <div class="divider"></div>
+
+
+  <ul class="events fly">
     <%= render partial: 'shared/wolf_feed_item', collection: @wolf_feed_items %>
-  </ol>
+  </ul>
+  <!--fade the pagination first 
   <%= will_paginate @wolf_feed_items %>
+  -->
+  <script>
+	stroll.bind( '.coolscroll ul' );
+  </script>
+
 
 
 <% end %>
+

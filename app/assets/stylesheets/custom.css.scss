@@ -31,6 +31,7 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+
 }
 
 body {
@@ -209,7 +210,7 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   @include box_sizing;
 }
 
@@ -228,6 +229,14 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+ }
+
+ .new_smoke{
+ margin: 0 0 0 0;
+ }
+
+ .shoot_submit{
+ display:none;
  }
 
 /* users index */
@@ -256,6 +265,17 @@ input {
     border-top: 1px solid #e8e8e8;
   }
 }
+
+.wolf_details{
+  overflow: scroll;
+  height: 640px;
+  padding: 10px;
+
+}
+
+.wolf_submit{
+  display:none;
+}
 .content {
   display: block;
 }
@@ -268,7 +288,7 @@ input {
 }
 
   textarea {
-    height: 300px;
+    height: 3em;
     margin-bottom: 5px;
   }
 
