@@ -27,10 +27,17 @@
 
   <script>
 
-   $('textarea').focus(function() {
-     $(this).closest('form').find('input[type="submit"]').show();
-     $('textarea').animate({height: "10em"}, 750);
-   });
+   $('form').hover(
+      function() {
+        
+        $('textarea').transition({height: "10em", delay:500}, 1000);
+        $(this).closest('form').find('input[type="submit"]').show();
+      },
+      function() {
+        $('textarea').transition({height: "3em"}, 1000);
+        $(this).closest('form').find('input[type="submit"]').hide();
+
+    });
 
    // $('textarea').blur(function() {
    //   $(this).closest('form').find('input[type="submit"]').show();

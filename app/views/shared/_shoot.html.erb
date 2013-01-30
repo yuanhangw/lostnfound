@@ -12,11 +12,15 @@
 
 <script>
 
-   $('textarea').focus(function() {
-     $(this).closest('form').find('input[type="submit"]').show();
-     $('textarea').animate({height: "8em"}, 750);
-   });
-
+   $('form').hover(
+      function() {
+        $(this).closest('form').find('input[type="submit"]').show();
+        $('textarea').transition({height: "10em", delay:500}, 500);
+      },
+      function() {
+        $(this).closest('form').find('input[type="submit"]').hide();
+        $('textarea').transition({height: "3em"}, 500);
+    });
    // $('textarea').blur(function() {
    //   $(this).closest('form').find('input[type="submit"]').show();
    //   $('textarea').animate({height: "3em"}, 750);

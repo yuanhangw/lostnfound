@@ -1,13 +1,12 @@
 
 
 <div class="smoke">
-  <div class="alert alert-success">
+  <div class="alert alert-success alert-smoke-status">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
 
-        
         <i class="icon-user"></i> 
-        <span class="label"><%= @smoke.user.name %></span>
-        asked for your help to answer the question from <span class="label"><%= @smoke.wolf.user.name %></span>
+        <span class="label label-success"><%= @smoke.user.name %></span>
+        asked for your help to answer the question from <span class="label label-success"><%= @smoke.wolf.user.name %></span>
         <small> 
         <span class="timestamp">
           <%= time_ago_in_words(@smoke.created_at) %> ago.</span>
@@ -47,8 +46,19 @@
 
       </script>
     <% end %>
+
 </div>
 
+
+<script>
+
+          window.setTimeout(function() {
+              $(".alert-smoke-status").fadeTo(1000, 0).slideUp(1000, function(){
+                  $(this).remove(); 
+              });
+          }, 10000);
+
+</script>
 
       
 
