@@ -12,13 +12,13 @@
 
 <script>
 
-   $('form').hover(
+   $('.new_shoot').hover(
       function() {
-        $(this).closest('form').find('input[type="submit"]').show();
+        $('.new_shoot').find('input[type="submit"]').show();
         $('textarea').transition({height: "10em", delay:500}, 500);
       },
       function() {
-        $(this).closest('form').find('input[type="submit"]').hide();
+        $('.new_shoot').find('input[type="submit"]').hide();
         $('textarea').transition({height: "3em"}, 500);
     });
    // $('textarea').blur(function() {

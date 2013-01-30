@@ -6,7 +6,7 @@
 
         <i class="icon-user"></i> 
         <span class="label label-success"><%= @smoke.user.name %></span>
-        asked for your help to answer the question from <span class="label label-success"><%= @smoke.wolf.user.name %></span>
+        asked for your help to answer the question from <span class="label"><%= @smoke.wolf.user.name %></span>
         <small> 
         <span class="timestamp">
           <%= time_ago_in_words(@smoke.created_at) %> ago.</span>
@@ -15,6 +15,7 @@
         <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
           <%= render 'shared/another_smoke_form', :smoke => @smoke %>
         <% else %>
+          <!--Dom elements where smoke status information appended to -->
           <div class="status">
           </div>
 
@@ -51,13 +52,14 @@
 
 
 <script>
-
+      if($('.status .icon-bullhorn').length > 0){
           window.setTimeout(function() {
               $(".alert-smoke-status").fadeTo(1000, 0).slideUp(1000, function(){
                   $(this).remove(); 
               });
-          }, 10000);
-
+          }, 15000);
+        }
+      
 </script>
 
       
