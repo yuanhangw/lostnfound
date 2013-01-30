@@ -23,12 +23,12 @@ class WolvesController < ApplicationController
 
       auth = current_user.authorizations.find_by_provider("facebook")
       access_token = FbGraph::User.me(auth['token'])
-      access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://hidden-brook-5001.herokuapp.com'+ smoke_path(@smoke) ,
+      access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: '+ URI.parse(url_for(:only_path => false)).host + '/spread/' + @smoke.url_token ,
        :name => "99 red ballon")
       
       end
 
-      flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
+      flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}"
       redirect_to root_path
       # add post to social media instead of included link in the flash
     else
