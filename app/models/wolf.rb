@@ -3,7 +3,8 @@ class Wolf < ActiveRecord::Base
   belongs_to :user
   has_many :smokes, :foreign_key => "wolf_id", :dependent => :destroy
   has_many :smokers, :through => :smokes, :source => :user
-  
+  has_many :shoots, :through => :smokes
+
   validates :content, :presence => true, :length => { :maximum => 140 }
   validates :user_id, :presence => true
 

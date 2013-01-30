@@ -25,7 +25,7 @@ class Smoke < ActiveRecord::Base
 
   #added by alex to get a list of shoots from current_user smoke to below
   def descendents_shoot
-    Wolf.shoots.where('user_idstr_chain LIKE ?', "#{self.user_idstr_chain}_%")
+    self.wolf.shoots.all(:include => :smoke).where('user_idstr_chain LIKE ?', "#{self.user_idstr_chain}_%")
   end
 
   def level
