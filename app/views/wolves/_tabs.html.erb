@@ -1,21 +1,20 @@
 
               <!--tab-->
-              <div class="tabbable tabs-right">
+              <div class="tabbable tabs-top">
 
                   <!--tab nav-tab -->
                   <ul class="nav nav-tabs" id="myTab">
-                    <li class="active"><a href="#details<%=@wolf.id%>"><i class="icon-file-alt"></i> details</a></li>
-                    <li><a href="#geo<%=@wolf.id%>"><i class="icon-map-marker"> geo</i></a></li>
-                    <li><a href="#image<%=@wolf.id%>"><i class="icon-camera-retro"> images</i></a></li>
-                    <li><a href="#messages<%=@wolf.id%>"><i class="icon-comments-alt"> meesages</i></a></li>
-                    <li><a href="#timeline<%=@wolf.id%>"><i class="icon-time"></i> timeline</a></li>
-                    <li><a href="#team<%=@wolf.id%>"><i class="icon-group"></i> team</a></li>
-                    <li><a href="#network<%=@wolf.id%>"><i class="icon-sitemap"></i> network</a></li>
-                    <li><a href="#endorsement<%=@wolf.id%>"><i class="icon-heart"></i> endorsement</a></li>
-                    <li><a href="#reply<%=@wolf.id%>"><i class="icon-lightbulb"></i> reply</a></li>
-                    <li><a href="#validation<%=@wolf.id%>"><i class="icon-legal"></i> validation</a></li> 
-                    <li><a href="#reward<%=@wolf.id%>"><i class="icon-gift"></i> reward</a></li>
-                    <li><a href="#setting<%=@wolf.id%>"><i class="icon-cogs"></i> setting</a></li>
+                    <li class="active"><a href="#details<%=@wolf.id%>"><i class="icon-lightbulb"></i></a></li>
+                    <li><a href="#geo<%=@wolf.id%>"><i class="icon-map-marker"></i></a></li>
+                    <li><a href="#messages<%=@wolf.id%>"><i class="icon-comments-alt"></i></a></li>
+                    <li><a href="#timeline<%=@wolf.id%>"><i class="icon-time"></i> </a></li>
+                    <li><a href="#team<%=@wolf.id%>"><i class="icon-group"></i> </a></li>
+                    <li><a href="#network<%=@wolf.id%>"><i class="icon-sitemap"></i></a></li>
+                    <li><a href="#endorsement<%=@wolf.id%>"><i class="icon-heart"></i></a></li>
+                    <li><a href="#reply<%=@wolf.id%>"><i class="icon-file-alt"></i></a></li>
+                    <li><a href="#validation<%=@wolf.id%>"><i class="icon-legal"></i></a></li> 
+                    <li><a href="#reward<%=@wolf.id%>"><i class="icon-gift"></i></a></li>
+                    <li><a href="#setting<%=@wolf.id%>"><i class="icon-cogs"></i></a></li>
                   </ul><!--tab nav-tab end-->
 
 
@@ -25,7 +24,7 @@
 
                       <div class="tab-pane small active" id="details<%=@wolf.id%>">
 
-                        <%= render partial: 'smokes/smoke', collection: @wolf.smokes%> 
+                        <%= render 'shoot'%> 
 
                       </div>
 
@@ -33,10 +32,6 @@
 
                       <div class="tab-pane" id="geo<%=@wolf.id%>">
                     	  geo
-                      </div>
-
-                      <div class="tab-pane " id="image<%=@wolf.id%>">
-                      image
                       </div>
 
                       <div class="tab-pane " id="messages<%=@wolf.id%>">

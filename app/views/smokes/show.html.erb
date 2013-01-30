@@ -14,22 +14,30 @@
 
             <div class ="offset1 span5 "> 
 
-	            <% if signed_in? %>
+	        <% if signed_in? %>
 
 	            <!-- need to implement friendly signin here -->
 	            <!-- smokes has before_filter -->	  
 
-	            <div class =" well " >          
+	            <div class =" well " > 
+
+	              <legend>
+      				<a class ="lead"> Q & A </a><br> 
+				  </legend>
+
+				  <div class="divider"></div> 
+
 					<%= render 'smokes/show' %>
-				</div>
+				  
+				  </div>
 				
-				<% else %>
+			<% else %>
 
 		 			<%= render 'sessions/new' %>                
 		            
 					<%= render 'users/form_new' %>
 
-				<% end %>
+			<% end %>
 
 			</div>
 
