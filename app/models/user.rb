@@ -34,6 +34,17 @@ class User < ActiveRecord::Base
     smokes.create!(:wolf_id => wolf.id)
   end
 
+  def descendent_shoots(wolf)
+
+    @smoke = smokes.find_by_wolf_id(wolf.id)
+    if @smoke.nil? 
+      nil
+    else 
+      wolf.shoots.where('user_idstr_chain LIKE ?', "#{@smoke.user_idstr_chain}_%")
+    end
+    
+  end
+
   def shooted?(smoke)
     shoots.find_by_user_id_and_smoke_id(self.id, smoke.id)
   end

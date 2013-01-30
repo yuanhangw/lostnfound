@@ -15,7 +15,7 @@ class WolvesController < ApplicationController
 
       auth = current_user.authorizations.find_by_provider("twitter")
       access_token = prepare_access_token(auth['token'], auth['secret'])
-      access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://hidden-brook-5001.herokuapp.com'+ smoke_path(@smoke) )
+      access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://'+ URI.parse(url_for(:only_path => false)).host + '/spread/' + @smoke.url_token )
 
       end
 
@@ -23,7 +23,7 @@ class WolvesController < ApplicationController
 
       auth = current_user.authorizations.find_by_provider("facebook")
       access_token = FbGraph::User.me(auth['token'])
-      access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: '+ URI.parse(url_for(:only_path => false)).host + '/spread/' + @smoke.url_token ,
+      access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' click to spread: http://'+ URI.parse(url_for(:only_path => false)).host + '/spread/' + @smoke.url_token ,
        :name => "99 red ballon")
       
       end

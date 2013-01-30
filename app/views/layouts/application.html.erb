@@ -29,6 +29,7 @@
         background-size: cover;  
   }
 
+
   .well{
 
 
@@ -104,7 +105,7 @@
 
 
 
-    <div class="container-fluid">
+    <div class="content container-fluid">
 
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
@@ -122,6 +123,7 @@
   </div>
 
     <%= render 'layouts/footer' unless @skip_footer %>   
+
     <%= debug(params) if Rails.env.development? %>
 
 

@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @skip_footer = false
+    @skip_footer = true
     @user = User.new
     @wolf = @user.wolves.build
 
