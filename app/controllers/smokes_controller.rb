@@ -47,7 +47,7 @@ class SmokesController < ApplicationController
     @user = User.new
 
     if signed_in?
-      @wolf_feed_items = current_user.wolf_feed.paginate(page: params[:page])
+      @wolf_feed_items = current_user.wolf_feed
       @shoot_feed_items = @smoke.shoots
     else
     end

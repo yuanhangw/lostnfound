@@ -45,14 +45,21 @@ class User < ActiveRecord::Base
 
   end
 
-  def shooted?(smoke)
+ #there seems to be problem with this two functions
+
+  def smoke_shot?(smoke)
     shoots.find_by_user_id_and_smoke_id(self.id, smoke.id)
   end
 
+   def wolf_shot?(wolf)
+    wolf.shoots.find_by_user_id(self.id)
+  end
+
+
+
   def wolf_feed
   
-    self.shot_wolves | self.smoked_wolves
-
+    (self.shot_wolves | self.smoked_wolves)
     
   end
 

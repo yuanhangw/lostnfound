@@ -12,12 +12,14 @@
           <%= time_ago_in_words(@smoke.created_at) %> ago.</span>
         </small>
 
+        <!--Dom elements where smoke status information appended to -->
+        <div class="status">
+        </div>
+
         <% if signed_in? && !current_user.smoked?(@smoke.wolf) %>
           <%= render 'shared/another_smoke_form', :smoke => @smoke %>
         <% else %>
-          <!--Dom elements where smoke status information appended to -->
-          <div class="status">
-          </div>
+
 
         <script>
           $('.status').append('<i class="icon-bullhorn"></i><span> you spreaded the question</span> <small> <span class="timestamp"><%= time_ago_in_words(current_user.smoked?(@smoke.wolf).created_at)%> ago </span></small><br>');
@@ -32,18 +34,25 @@
     <p><%= @smoke.wolf.content %></p>
 
     <small>Posted by <i class="icon-user"></i> 
-    <%= @smoke.wolf.user.name %>
+    
+    <% if @smoke.wolf.user == current_user %>
+        <span class="label label-info">you</span>
+    <% else %>
+        <%=@smoke.wolf.user.name%>
+    <% end %>
+
     <i class="icon-time"></i>
     <%= time_ago_in_words(@smoke.wolf.created_at) %> ago.
     <i class="icon-fire"></i> 
     <%= @smoke.wolf.smokers.count %> people helped to spread: <%= @smoke.descendents_all_user_ids  %>  </small>
     </blockquote>
 
-    <% if signed_in? && !current_user.shooted?(@smoke) %>
+    <% if signed_in? && !current_user.wolf_shot?(@wolf) %>
           <%= render 'shared/shoot', :smoke => @smoke %>
     <% else %>
-      <script>
-         $('.status').append('<i class="icon-lightbulb"></i><span> you answered the question</span> <small> <span class="timestamp"><%= time_ago_in_words(current_user.shooted?(@smoke).created_at)%> ago </span></small>');
+
+        <script>
+         $('.status').append('<i class="icon-lightbulb"></i><span> you answered the question</span> <small> <span class="timestamp"><%= time_ago_in_words(current_user.wolf_shot?(@wolf).created_at)%> ago </span></small>');
 
       </script>
     <% end %>

@@ -1,0 +1,25 @@
+    <blockquote>
+        
+    <p><%= @answer.content %></p>
+
+    <small>Answered by <i class="icon-user"></i> 
+        <% if User.find(@answer.user_id) == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=User.find(@answer.user_id).name%>
+        <% end %>
+
+        through <i class="icon-bullhorn"></i>
+
+        <% if @answer.smoke.user == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=@answer.smoke.user.name%>
+        <% end %>
+
+        <i class="icon-time"></i> 
+        <%= time_ago_in_words(@answer.created_at) %> ago
+        
+    </small>
+    
+    </blockquote>

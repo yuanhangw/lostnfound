@@ -1,6 +1,10 @@
 
 	<%= render 'smokes/show' %>
 
-<div class="shoots coolscroll">
+	<% if !@answer.nil? %>
+	<%= render 'wolves/answer' %>
+	<% end %>
+
+	<div class="shoots coolscroll">
 	<%= render 'shared/shoot_feed' %>
-</div>
+	</div>

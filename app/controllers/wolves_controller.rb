@@ -49,19 +49,24 @@ class WolvesController < ApplicationController
 
   def show
     @wolf = Wolf.find(params[:id])
-    @smokes = @wolf.smokes.paginate(:page => params[:page])
+    @smokes = @wolf.smokes
 
-    if current_user.smoked?(@wolf).parent.nil?
+    if current_user.smoked?(@wolf).nil?
+      @smoke = current_user.wolf_shot?(@wolf).smoke
+    elsif current_user.smoked?(@wolf).parent.nil?
       @smoke = current_user.smoked?(@wolf)
     else
       @smoke = current_user.smoked?(@wolf).parent
     end 
 
     if signed_in?
-      @wolf_feed_items = current_user.wolf_feed.paginate(page: params[:page])
+      @wolf_feed_items = current_user.wolf_feed
       @shoot_feed_items = current_user.descendent_shoots(@wolf)
     else
     end
+
+    @answer = current_user.smoke_shot?(@smoke)
+
 
   end
 

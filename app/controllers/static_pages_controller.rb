@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     @wolf = @user.wolves.build
 
     if signed_in?
-      @wolf_feed_items = current_user.wolf_feed.paginate(page: params[:page])
+      @wolf_feed_items = current_user.wolf_feed
     end
 
   end
