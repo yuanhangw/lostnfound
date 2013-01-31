@@ -1,0 +1,54 @@
+<li>
+<div class= "shoot<%=shoot_feed_item.id%>">
+    <!--event summary -->
+
+    <blockquote>
+    
+    <p><%= shoot_feed_item.content %></p>
+
+    <small>Responded by <i class="icon-user"></i> 
+        <% if User.find(shoot_feed_item.user_id) == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=User.find(shoot_feed_item.user_id).name%>
+        <% end %>
+        through <i class="icon-bullhorn"></i>
+
+        <% if shoot_feed_item.smoke.user == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=shoot_feed_item.smoke.user.name%>
+        <% end %>
+
+        <i class="icon-time"></i> 
+        <%= time_ago_in_words(shoot_feed_item.created_at) %> ago
+        
+    </small>
+    
+    </blockquote>
+
+
+    <!--event summary -->
+
+
+
+    <div class="anchor">
+    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
+    </div>
+
+
+
+</div> <!--end of wolf-->
+ 
+    <script>
+
+        //script for click whole area
+        $(".shoot<%=shoot_feed_item.id%>").click(function(){
+            $('.anchor').load();
+        console.log("Handler for .click() called. <%=shoot_feed_item.id%>");
+        });
+
+    </script>
+
+
+</li>

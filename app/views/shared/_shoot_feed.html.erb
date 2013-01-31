@@ -1,0 +1,18 @@
+<% if @shoot_feed_items.any? %>
+
+
+  <ul class="shoots fly">
+    <%= render partial: 'shared/shoot_feed_item', collection: @shoot_feed_items %>
+  </ul>
+
+  <!--fade the pagination first 
+  <%= will_paginate @wolf_feed_items %>
+  -->
+  <script>
+	stroll.bind( '.coolscroll ul' );
+  </script>
+
+
+
+<% end %>
+

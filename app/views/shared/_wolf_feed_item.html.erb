@@ -15,7 +15,7 @@
     <i class="icon-time"></i>
     <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
     <i class="icon-fire"></i> 
-    <%= wolf_feed_item.smokers.count %> people helped to spread 
+    <%= wolf_feed_item.smokers.count - 1%> spreads 
     </small>
     <%=link_to "detail", wolf_feed_item%>
     </blockquote>
@@ -31,6 +31,7 @@
     </div>
 
     <div class="anchor">
+    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
     </div>
 
     <!--event alerts-->
@@ -42,6 +43,7 @@
  
     <script>
 
+        //script for click whole area
         $(".wolf<%=wolf_feed_item.id%>").click(function(){
             $('.anchor').load();
         console.log("Handler for .click() called. <%=wolf_feed_item.id%>");

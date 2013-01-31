@@ -40,9 +40,9 @@ class User < ActiveRecord::Base
     if @smoke.nil? 
       nil
     else 
-      wolf.shoots.where('user_idstr_chain LIKE ?', "#{@smoke.user_idstr_chain}_%")
+      wolf.shoots.where('user_idstr_chain LIKE ?', "#{@smoke.user_idstr_chain}%")
     end
-    
+
   end
 
   def shooted?(smoke)
@@ -51,7 +51,8 @@ class User < ActiveRecord::Base
 
   def wolf_feed
   
-    self.smoked_wolves
+    self.shot_wolves | self.smoked_wolves
+
     
   end
 
