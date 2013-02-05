@@ -1,5 +1,7 @@
 class ShootsController < ApplicationController
   before_filter :signed_in_user, :only => [:new, :create, :edit, :destroy]
+  respond_to :js, :html
+
 
   def new
   end
@@ -7,7 +9,10 @@ class ShootsController < ApplicationController
   def create
     @shoot = Shoot.new(params[:shoot])
     @shoot.save!
-    redirect_to(:back) 
+    #let's try ajax dynamic update! 
+    
+    respond_with(@shoot)
+    #redirect_to(:back) 
   end
 
   def edit

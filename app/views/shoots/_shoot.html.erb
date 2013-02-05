@@ -1,0 +1,25 @@
+    <blockquote>
+        
+    <p><%= @shoot.content %></p>
+
+    <small>Answered by <i class="icon-user"></i> 
+        <% if User.find(@shoot.user_id) == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=User.find(@shoot.user_id).name%>
+        <% end %>
+
+        through <i class="icon-bullhorn"></i>
+
+        <% if @shoot.smoke.user == current_user %>
+            <span class="label label-info">you</span>
+        <% else %>
+        <%=@shoot.smoke.user.name%>
+        <% end %>
+
+        <i class="icon-time"></i> 
+        <%= time_ago_in_words(@shoot.created_at) %> ago
+        
+    </small>
+    
+    </blockquote>

@@ -1,4 +1,4 @@
-<%= form_for(current_user.shoots.build(:user_id => current_user.id, :smoke_id => smoke.id)) do |f| %>
+<%= form_for current_user.shoots.build(:user_id => current_user.id, :smoke_id => smoke.id),:remote => true do |f| %>
   <div>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :smoke_id %>
@@ -10,21 +10,58 @@
 <% end %>
 
 
+
 <script>
 
    $('.new_shoot').hover(
       function() {
         $('.new_shoot').find('input[type="submit"]').show();
-        $('textarea').transition({height: "10em", delay:500}, 500);
+        //$('textarea').transition({height: "10em", delay:500}, 500);
       },
       function() {
         $('.new_shoot').find('input[type="submit"]').hide();
-        $('textarea').transition({height: "3em"}, 500);
+        //$('textarea').transition({height: "3em"}, 500);
     });
+
    // $('textarea').blur(function() {
    //   $(this).closest('form').find('input[type="submit"]').show();
    //   $('textarea').animate({height: "3em"}, 750);
    // });
 
+    $(".new_shoot").bind('ajax:beforeSend', function(){
+      console.log("beforeSend");
+    });
+
+
+    $(".new_shoot").bind('ajax:success', function(){
+      console.log("successful");
+    });
+
+
+    $(".new_shoot").bind('ajax:complete', function(){
+      console.log("complete");
+    });
+
+   $(".new_shoot").bind('ajax:error', function(){
+      console.log("errr");
+    });
+
+  
+
+
+    // bind with ajax loading status. 
+    // http://www.simonecarletti.com/blog/2010/06/unobtrusive-javascript-in-rails-3/
+
+    // jQuery(function($) {
+    //   // create a convenient toggleLoading function
+    //   var toggleLoading = function() { $("#loading").toggle() };
+
+    //   $("#tool-form")
+    //     .bind("ajax:loading",  toggleLoading)
+    //     .bind("ajax:complete", toggleLoading)
+    //     .bind("ajax:success", function(event, data, status, xhr) {
+    //       $("#response").html(data);
+    //     });
+    // });
 
 </script>
