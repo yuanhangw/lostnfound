@@ -10,8 +10,8 @@ class ShootsController < ApplicationController
     @shoot = Shoot.new(params[:shoot])
     @shoot.save!
     #let's try ajax dynamic update! 
-    
-    respond_with(@shoot)
+    @wolf_feed_items = current_user.wolf_feed    
+    #respond_with(@shoot)
     #redirect_to(:back) 
   end
 
