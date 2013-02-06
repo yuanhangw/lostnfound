@@ -39,6 +39,7 @@ class Smoke < ActiveRecord::Base
     @indexed_users.values_at(*@idstrs)
   end
 
+
   def descendents_all_user_ids   # this returns an array of all user_ids below current smoke
     wolf.smokes.where('user_idstr_chain LIKE ?', "#{self.user_idstr_chain}_%").pluck(:user_id)
   end

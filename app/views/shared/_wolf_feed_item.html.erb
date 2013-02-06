@@ -1,55 +1,112 @@
 <li>
-<div class= "wolf<%=wolf_feed_item.id%>">
-    <!--event summary -->
+    <div class= "wolf<%=wolf_feed_item.id%>">
+        <!--event summary -->
 
-    <blockquote>
-    
-    <p><%= wolf_feed_item.content %></p>
+        <blockquote>
+        
+        <p><%= wolf_feed_item.content %></p>
 
-    <small>Posted by <i class="icon-user"></i> 
-        <% if User.find(wolf_feed_item.user_id) == current_user %>
-            <span class="label label-info">you</span>
-        <% else %>
-        <%=User.find(wolf_feed_item.user_id).name%>
-        <% end %>
-    <i class="icon-time"></i>
-    <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.
-    <i class="icon-fire"></i> 
-    <%= wolf_feed_item.smokers.count - 1%> spreads 
-    </small>
-    <%=link_to "detail", wolf_feed_item%>
-    </blockquote>
+        <!--bloated status display-->
+        <small>Posted by <i class="icon-user"></i> 
 
+            <% if User.find(wolf_feed_item.user_id) == current_user %>
+                <span class="label label-info">you</span>
+                <i class="icon-time"></i>
+                <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.<br>
+            <% else %>
 
-    <!--event summary -->
+                <%=User.find(wolf_feed_item.user_id).name%>
+                <i class="icon-time"></i>
+                <%= time_ago_in_words(wolf_feed_item.created_at) %> ago.<br>
 
-    <!--event alerts-->
-    <div class="alert alert-info">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <i class="icon-info-sign"></i>
-      Alert: e.g. root message, admin update, status update etc. broadcast to event x smoker 
-    </div>
+                    <%if current_user.smoked?(wolf_feed_item)%>
+                        <i class="icon-bullhorn"></i>
+                        you spreaded it @ level <%=current_user.smoked?(wolf_feed_item).level%> 
+                        from <%=current_user.smoked?(wolf_feed_item).parent_smoke.user.name%>
+                        
 
-    <div class="anchor">
-    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
-    </div>
+                        <i class="icon-time"></i>
+                        <%= time_ago_in_words(current_user.smoked?(wolf_feed_item).created_at) %> ago. <br>
 
-    <!--event alerts-->
+                        <i class="icon-link"></i> chain start from
+                        <% current_user.smoked?(wolf_feed_item).user_chain.each do |f| %>
+                        <%= f.name %> <i class="icon-angle-right"></i>
+                        <% end %>
+                        to you. </br>
 
-
+                    <% end %>
 
 
-</div> <!--end of wolf-->
- 
-    <script>
 
-        //script for click whole area
-        $(".wolf<%=wolf_feed_item.id%>").click(function(){
-            $('.anchor').load();
-        console.log("Handler for .click() called. <%=wolf_feed_item.id%>");
-        });
+            <% end %>
 
-    </script>
+
+
+            <%if current_user.smoked?(wolf_feed_item)%>
+
+                <i class="icon-fire"></i> 
+                <%= wolf_feed_item.smokers.count - 1%> total spreads for the event, 
+                <%= current_user.smoked?(wolf_feed_item).descendents_all_user_ids.length%> people spreads from you. <br>
+                
+                <%unless current_user.smoked?(wolf_feed_item).descendents_all_user_ids.length == 0%>
+                    <i class="icon-group"></i>
+                    you have enlisted spreads from: 
+                    <% current_user.smoked?(wolf_feed_item).descendents_all_user_ids.each do |f| %>
+                    <%= User.find_by_id(f).name %>  - 
+                    <% end %><br>
+                <% end %>
+
+
+                <%unless current_user.smoked?(wolf_feed_item).siblings_user_ids.length == 0%>
+                    <i class = "icon-cloud"></i>
+                    people you might know who also spreaded:
+                    <% current_user.smoked?(wolf_feed_item).siblings_user_ids.each do |f| %>
+                    <%= User.find_by_id(f).name %>  - 
+                    <% end %><br>
+                <% end %>
+
+                <i class="icon-qrcode"></i>
+                your key: <%= current_user.smoked?(wolf_feed_item).url_token%>
+
+            <% end %>
+
+
+
+        </small>
+
+
+
+        <%=link_to "detail", wolf_feed_item%>
+        </blockquote>
+
+
+        <!--event summary -->
+
+        <!--event alerts-->
+        <div class="alert alert-info">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <i class="icon-info-sign"></i>
+          Alert: e.g. root message, admin update, status update etc. broadcast to event x smoker 
+        </div>
+
+        <div class="anchor">
+        <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
+        </div>
+
+        <!--event alerts-->
+
+
+    </div> <!--end of wolf-->
+     
+        <script>
+
+            //script for click whole area
+            $(".wolf<%=wolf_feed_item.id%>").click(function(){
+                $('.anchor').load();
+            console.log("Handler for .click() called. <%=wolf_feed_item.id%>");
+            });
+
+        </script>
 
 
 </li>
