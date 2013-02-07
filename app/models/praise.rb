@@ -8,7 +8,8 @@ class Praise < ActiveRecord::Base
 
   validates :user_id, :presence => true
   validates :shoot_id, :presence => true
-  validates :content, :presence => true
+  #content validation commented out for the time being 
+  #validates :content, :presence => true
 
   default_scope :order => 'praises.created_at DESC'
 

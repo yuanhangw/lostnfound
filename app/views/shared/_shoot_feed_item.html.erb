@@ -24,23 +24,46 @@
         <%= time_ago_in_words(shoot_feed_item.created_at) %> ago
         
     </small>
-    
-    </blockquote>
 
+    <div class="anchor">
+
+
+        <%= form_for(current_user.praises.build(:user_id => current_user.id, :shoot_id => shoot_feed_item.id)) do |f| %>
+          <div>
+            <%= f.hidden_field :user_id %>
+            <%= f.hidden_field :shoot_id %>
+          </div>
+          <i class="icon-thumbs-up"></i>
+          <div class="badge badge-success", style="display:inline-block">2 </div>
+          <%= f.submit "vote up", :class => "btn btn-small", :style => "inline-block" %>
+          
+        <% end %>    
+
+        
+
+    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
+    </div>
+
+    </blockquote>
 
     <!--event summary -->
 
-
-
-    <div class="anchor">
-    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
-    </div>
 
 
 
 </div> <!--end of wolf-->
  
     <script>
+
+        $('.shoot<%=shoot_feed_item.id%>').hover(
+          function() {
+            $('.shoot<%=shoot_feed_item.id%>').find('.anchor').show();
+            //$('textarea').transition({height: "10em", delay:500}, 500);
+          },
+          function() {
+            $('.shoot<%=shoot_feed_item.id%>').find('.anchor').hide();
+            //$('textarea').transition({height: "3em"}, 500);
+        });
 
         //script for click whole area
         $(".shoot<%=shoot_feed_item.id%>").click(function(){

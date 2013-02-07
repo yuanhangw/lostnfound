@@ -1,0 +1,7 @@
+<%= form_for(current_user.praises.build(:user_id => current_user.id, :shoot_id => shoot_feed_item.id)) do |f| %>
+  <div>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :shoot_id %>
+  </div>
+  <%= f.submit "KP", :class => "btn btn-small btn-danger", :style => "inline-block" %>
+<% end %>
