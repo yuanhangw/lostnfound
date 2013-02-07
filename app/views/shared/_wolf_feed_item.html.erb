@@ -65,11 +65,26 @@
                     <% end %><br>
                 <% end %>
 
-                <i class="icon-qrcode"></i>
-                your key: <%= current_user.smoked?(wolf_feed_item).url_token%>
 
             <% end %>
 
+            <i class="icon-lightbulb"></i> 
+            <%= wolf_feed_item.shoots.count %> answers provided, by:
+            <% wolf_feed_item.shoots.each do |f|%>
+            <%= User.find_by_id(f.user_id).name %> -
+            <% end %> <br>
+
+
+            <% if current_user.wolf_shot?(wolf_feed_item) %>
+            <i class="icon-check"></i> you have answer the question, <i class="icon-time"></i>
+            <%= time_ago_in_words(current_user.wolf_shot?(wolf_feed_item).created_at) %> ago. <br>
+            <% else %>
+            <i class="icon-check-empty"></i> you have not yet answered the question. <br>
+            <% end %>
+
+            <i class="icon-qrcode"></i>
+            your key: <%= current_user.smoked?(wolf_feed_item).url_token%></br>
+            
 
 
         </small>
