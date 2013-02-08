@@ -316,19 +316,19 @@ input {
 /* temporary style markup for testing */
 
 .anchor {
-  display: none;
-  width: 120px;
+  width: 220px;
 
-  &:hover {
+/*  &:hover {
   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
   } 
+*/
 
 }
 
 
 blockquote{
   
-  margin: 0 0 0px;
+  margin: 0 0 5px;
 }

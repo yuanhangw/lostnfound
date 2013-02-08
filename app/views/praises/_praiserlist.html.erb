@@ -1,0 +1,7 @@
+        <% unless @praise.shoot.praises.empty? %>
+            <small>
+                <% @praise.shoot.praises.each do |f| %>
+                <%= User.find_by_id(f.user_id).name %> - 
+                <% end %> 认为这个说法靠谱
+            </small>
+        <% end %>

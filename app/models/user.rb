@@ -51,11 +51,13 @@ class User < ActiveRecord::Base
     shoots.find_by_user_id_and_smoke_id(self.id, smoke.id)
   end
 
-   def wolf_shot?(wolf)
+  def wolf_shot?(wolf)
     wolf.shoots.find_by_user_id(self.id)
   end
 
-
+  def praised?(shoot)
+    praises.find_by_shoot_id(shoot.id)
+  end
 
   def wolf_feed
   
