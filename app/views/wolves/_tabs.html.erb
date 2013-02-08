@@ -11,7 +11,7 @@
                     <li><a href="#team<%=@wolf.id%>"><i class="icon-group"></i> </a></li>
                     <li><a href="#network<%=@wolf.id%>"><i class="icon-sitemap"></i></a></li>
                     <li><a href="#endorsement<%=@wolf.id%>"><i class="icon-heart"></i></a></li>
-                    <li><a href="#reply<%=@wolf.id%>"><i class="icon-file-alt"></i></a></li>
+                    <li><a href="#status<%=@wolf.id%>"><i class="icon-file-alt"></i></a></li>
                     <li><a href="#validation<%=@wolf.id%>"><i class="icon-legal"></i></a></li> 
                     <li><a href="#reward<%=@wolf.id%>"><i class="icon-gift"></i></a></li>
                     <li><a href="#setting<%=@wolf.id%>"><i class="icon-cogs"></i></a></li>
@@ -56,8 +56,9 @@
                     	endorsement
                       </div>
 
-                      <div class="tab-pane " id="reply<%=@wolf.id%>">
-                    	reply
+                      <div class="tab-pane " id="status<%=@wolf.id%>">
+                    	
+                        <%= render 'status'%>
                       </div>
 
                       <div class="tab-pane " id="validation<%=@wolf.id%>">
@@ -75,6 +76,17 @@
                   </div><!--tab content end-->
                
                   <script>
+
+                     $('.tabbable').hover(
+                        function() {
+                          $('#myTab').slideDown();
+                          //$('textarea').transition({height: "10em", delay:500}, 500);
+                        },
+                        function() {
+                          $('#myTab').slideUp();
+                          //$('textarea').transition({height: "3em"}, 500);
+                      });
+
                       $('#myTab a').click(function (e) {
                         e.preventDefault();
                         $(this).tab('show');
