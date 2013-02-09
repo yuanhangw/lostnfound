@@ -1,8 +1,8 @@
       <div class ="well well-small">
                 
-                      <legend>
+                      <div class="title">
                             <a class ="lead">Sign in </a><small>with</small>
-                      </legend>
+                      </div>
                       <div class="divider"></div>
 
     
@@ -17,9 +17,9 @@
                 
              <%= form_for(:session, url: sessions_path) do |f| %>
 
-                      <legend>
+                      <div class="title">
                             <a class ="lead">Sign in</a> <small> like a true bolloonman</small>
-                      </legend>
+                      </div>
                       <div class="divider"></div>
 
               <%= f.text_field :email, class: "input block level",placeholder: "email" %>

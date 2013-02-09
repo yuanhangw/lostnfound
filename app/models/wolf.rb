@@ -4,6 +4,7 @@ class Wolf < ActiveRecord::Base
   has_many :smokes, :foreign_key => "wolf_id", :dependent => :destroy
   has_many :smokers, :through => :smokes, :source => :user
   has_many :shoots, :through => :smokes
+  has_many :praises, :through => :shoots
 
   validates :content, :presence => true, :length => { :maximum => 140 }
   validates :user_id, :presence => true

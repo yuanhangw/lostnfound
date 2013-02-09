@@ -20,8 +20,10 @@
 }
 .coolscroll	ul li {
 		position: relative;
-		padding: 16px;
-		background: #eee;
+		padding: 0px;
+		margin-bottom: 3px;
+		border-radius: 2px;
+		background: #fff;
 		color: #252525;
 		font-size: 12px;
 		z-index: 2;
@@ -40,5 +42,5 @@
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	}	
+}	
 

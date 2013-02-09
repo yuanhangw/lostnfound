@@ -1,19 +1,38 @@
 <% if @wolf_feed_items.any? %>
 
-<div class="well">
+<div class="transpad">
+  <div class="card">
 
-  <legend>
-      <a class ="lead"> Event Feed </a><br> 
+      <div class="title">
+          <a class ="lead"> Event Feed </a>
+          <span class="amp">&</span>
 
-  </legend>
+              <div class="thing green">
+               <i class="icon-thumbs-up" style="padding-right:0em"></i>
+                 <div class="thing-alert">
+                  3
+                 </div>
+              </div>
+              <div class="thing blue">
+               <i class="icon-lightbulb" style="padding-right:0em"></i>
+              </div>
+              <div class="thing red">
+                <i class="icon-bullhorn" style="padding-right:0em"></i>
+                 <div class="thing-alert">
+                  15
+                 </div>
 
-  <div class="divider"></div>
+              </div>
+
+      </div>
 
 
-  <ul class="events fly">
-    <%= render partial: 'shared/wolf_feed_item', collection: @wolf_feed_items %>
-  </ul>
 
+      <ul class="events fly">
+        <%= render partial: 'shared/wolf_feed_item', collection: @wolf_feed_items %>
+      </ul>
+
+  </div>
 </div>
 
   <script>

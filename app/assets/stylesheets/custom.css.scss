@@ -37,6 +37,8 @@ html {
 body {
   padding-top: 60px;
 
+    background: -webkit-linear-gradient(315deg, rgba(0, 170, 255, 0.1), rgba(220, 110, 10, 0.2) 80%), /* -webkit-linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(220, 255, 255, 0.2)), */ url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/shattered.png);
+background-attachment: fixed, fixed;
 }
 
 section {
@@ -276,6 +278,9 @@ input {
 .wolf_submit{
   display:none;
 }
+.wolf_content{
+  padding: 16px 16px 25px 16px;
+}
 .content {
   display: block;
 }
@@ -337,3 +342,159 @@ blockquote{
   
   display: none;
 }
+
+.title{
+  
+  border-bottom: solid 1px rgba(250, 250, 250, 1.0);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  padding-bottom: 5px;
+  margin-bottom:10px;
+  text-shadow: 1px 1px 0 rgba(30, 160, 200, 0.15);
+
+}
+
+
+
+.card{
+  
+  background: white;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), -1px 1px 0 rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(0, 0, 0, 0.0), 0 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin: 1px auto;
+  padding: 15px 20px;
+}
+
+.thing{
+  
+  color: #f3f5f2;
+
+  border: solid 3px #f0f0f0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  margin: -10px auto;
+  margin-right: 5px;
+  display: block;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 35px;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 100ms linear;
+  font-size: 12pt;
+  float:right;
+
+}
+
+.red{
+      background-color: #f2915a;
+      &:hover{
+      background-color: #f57c38;
+      }
+  }
+
+.blue{
+      background-color: #5ad;
+      &:hover{
+      background-color: #3b85f5;
+      }
+}
+
+.green{
+      background-color: #6fb564;
+      &:hover{
+      background-color: #24b021;
+      }
+}
+
+.thing-alert{
+  
+  color: #f3f5f2;
+  background-color: #eb1b0e;
+  border: solid 2px #f0f0f0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  margin: -10px auto;
+  margin-right: 5px;
+  display: block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 12px;
+  position: relative;
+  left:10px;
+  top:-30px;
+  z-index: 2;
+  -webkit-transition: all 100ms linear;
+  font-size: 6pt;
+  float:right;
+
+}
+
+
+.thing-status{
+  
+  color: #f3f5f2;
+
+  border: solid 0px #f0f0f0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  margin: 0px auto;
+  margin-right: 5px;
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 100ms linear;
+  font-size: 7pt;
+  float:left;
+
+}
+
+
+span.amp {
+opacity: 0.4;
+font-size: 30px;
+font-style: italic;
+font-family: palatino, serif;
+}
+
+.transpad {
+background: rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+padding: 7px 7px;
+}
+
+[class^="wolf_status"] {
+
+display: none;
+color: #444;
+font-family: exo, sans-serif;
+box-shadow: inset 0 5px 3px -3px rgba(0, 0, 0, 0.07);
+background: #eee;
+padding: 20px;
+border-top: solid 1px #ccc;
+border-bottom-left-radius: 2px;
+border-bottom-right-radius: 2px;
+
+  
+}
+
+highlight{
+
+border-radius: 2px;
+box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+padding: 1px 2px;
+background: #fafad0;
+
+}
+
+
+
