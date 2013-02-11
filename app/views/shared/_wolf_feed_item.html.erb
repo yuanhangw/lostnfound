@@ -138,7 +138,8 @@
                     //$('textarea').transition({height: "10em", delay:500}, 500);
                 }, // function = onMouseOver callback (REQUIRED)   
 
-                 timeout: 100, // number = milliseconds delay before onMouseOut    
+                 timeout: 50, // number = milliseconds delay before onMouseOut    
+                 interval: 700,
                  out: function() {
                     $('.wolf_status<%=wolf_feed_item.id%>').slideUp();
                     //$('textarea').transition({height: "3em"}, 500);
