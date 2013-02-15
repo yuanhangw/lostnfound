@@ -6,24 +6,36 @@
   with <a href="http://rubyonrails.org/">Ruby on Rails</a>. This
   is the sample application for the tutorial.
 </p>
+-----------------current user ---------------
+<div id="current_user"><%=current_user.name%></div>
+-----------------logged on user -------------
 <div id='sandbox'>sandbox</div>
 
 
 
 <script src="http://shielded-waters-3875.herokuapp.com/socket.io/socket.io.js"></script>
 <script>
-  var socket1 = io.connect('http://shielded-waters-3875.herokuapp.com',{port:80})
-  var socket2 = io.connect('http://hidden-brook-5001.jit.su',{port:80})
+ 
+  var socket = io.connect('http://shielded-waters-3875.herokuapp.com',{port:80})
    
-   socket1.on('news', function (data) {
-    console.log(data);
-    $('#sandbox').append('<div> receiving message on hidden-brook-5001 from shielded-water-3878 '+data+'<div>');
-    socket1.emit('my other event', { my: 'data' });
-  });
+   socket.on('connect', function(){
+   		socket.emit('add_user', $('#current_user').text());
+   });
 
-    socket2.on('news', function (data) {
-    console.log(data);
-    $('#sandbox').append('<div> receiving message on hidden-brook-5001 from hidden-brook-5001 @ Nodejitsu '+data+'<div>');
-    socket2.emit('my other event', { my: 'data' });
-  });
+   socket.on('updateusers', function(usernames){
+
+   		$('#sandbox').empty();
+		$.each(usernames, function(key, value) {
+			$('#sandbox').append('<div>' + key + '</div>');
+		});
+
+   });
+
+
+  //  socket.on('news', function (data) {
+  //   console.log(data);
+  //   $('#sandbox').append('<div> receiving message '+data+'<div>');
+  //   socket.emit('my other event', { my: 'data' });
+  // });
+
 </script>
