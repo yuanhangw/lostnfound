@@ -69,8 +69,8 @@
         $( ".name" ).each(function( index ) {
 
             console.log( index + ": " + $(this).data("name") );
-            $(this).toggleClass("online",(usernames[$(this).data("name")]!=null))
-            if (usernames[$(this).data("name")]==null){
+            $(this).toggleClass("online",(usernames[$(this).text()]!=null))
+            if (usernames[$(this).text()]==null){
               console.log('i am not online');
             }else{
               console.log('i am ONLINE');
