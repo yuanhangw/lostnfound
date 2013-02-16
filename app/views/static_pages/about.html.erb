@@ -13,10 +13,10 @@
 
 
 
-<script src="http://shielded-waters-3875.herokuapp.com/socket.io/socket.io.js"></script>
+<script src="http://hidden-brook-5001.jit.su/socket.io/socket.io.js"></script>
 <script>
  
-  var socket = io.connect('http://shielded-waters-3875.herokuapp.com',{port:80})
+  var socket = io.connect('http://192.168.8.4',{port:5000})
    
    socket.on('connect', function(){
    		socket.emit('add_user', $('#current_user').text());

@@ -496,5 +496,17 @@ background: #fafad0;
 
 }
 
+.name{
+transition: all 1s;
+-moz-transition: all 1s, -moz-transform 1s; /* Firefox 4 */
+-webkit-transition: all 1s, -webkit-transform 1s; /* Safari and Chrome */
+-o-transition: all 1s, -o-transform 1s; /* Opera */
+}
 
 
+
+.name.online {
+color: #6fb564;
+text-shadow: 1px 1px 2px #7fff00;
+
+}

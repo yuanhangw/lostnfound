@@ -3,10 +3,11 @@
 <div class="transpad">
   <div class="card">
 
+      <div id="online_user_count"></div>
+
       <div class="title">
           <a class ="lead"> Event Feed </a>
           <span class="amp">&</span>
-
               <div class="thing green">
                <i class="icon-thumbs-up" style="padding-right:0em"></i>
                  <div class="thing-alert">
@@ -35,10 +36,64 @@
   </div>
 </div>
 
+<!-- for socket experiment -->
+<div id="current_user" style= "display:none"><%=current_user.name%></div>
+
   <script>
 	stroll.bind( '.coolscroll ul' );
   </script>
 
+  <!-- socket experiment  -->
+  <script src="http://shielded-waters-3875.herokuapp.com/socket.io/socket.io.js"></script>
+  <script>
+    
+   
+    var socket = io.connect('http://shielded-waters-3875.herokuapp.com',{port:80})
+     
+     socket.on('connect', function(){
+        socket.emit('add_user', $('#current_user').text());
+        console.log('connected seding user name' + $('#current_user').text());
+     });
+
+     socket.on('updateusers', function(usernames){
+
+        var user_count = Object.keys(usernames).length;
+
+        console.log('number of online user ' + user_count);
+
+
+        $('#online_user_count').empty();
+        $('#online_user_count').append(user_count);
+        $('#online_user_count').toggleClass('animated flash');
+
+        $( ".name" ).each(function( index ) {
+
+            console.log( index + ": " + $(this).data("name") );
+            $(this).toggleClass("online",(usernames[$(this).data("name")]!=null))
+            $(this).addClass('animated tada');
+            if (usernames[$(this).data("name")]==null){
+              console.log('i am not online');
+            }else{
+              console.log('i am ONLINE');
+            }
+        });
+
+
+
+
+
+
+     });
+
+
+    //  socket.on('news', function (data) {
+    //   console.log(data);
+    //   $('#sandbox').append('<div> receiving message '+data+'<div>');
+    //   socket.emit('my other event', { my: 'data' });
+    // });
+
+  </script>
+  <!-- end socket experiment  -->
 
 
 <% end %>
