@@ -70,7 +70,6 @@
 
             console.log( index + ": " + $(this).data("name") );
             $(this).toggleClass("online",(usernames[$(this).data("name")]!=null))
-            $(this).addClass('animated tada');
             if (usernames[$(this).data("name")]==null){
               console.log('i am not online');
             }else{
