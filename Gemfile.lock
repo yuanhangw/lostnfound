@@ -72,6 +72,11 @@ GEM
     commonjs (0.2.6)
     d3_rails (3.0.4)
       railties (>= 3.1.0)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.4.1)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     devise (2.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -261,6 +266,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.2)
   d3_rails
+  delayed_job_active_record
   faker (= 1.0.1)
   fb_graph (= 1.5.4)
   jquery-rails (= 2.0.2)

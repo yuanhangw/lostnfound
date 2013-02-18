@@ -4,7 +4,7 @@ gem 'rails', '3.2.10'
 gem 'bootstrap-sass', '2.1'
 
 gem 'activeadmin'
- gem "meta_search",    '>= 1.1.0.pre'
+gem "meta_search",    '>= 1.1.0.pre'
 
 #to customize bootstrap
 gem 'bootswatch-rails'
@@ -20,6 +20,10 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
+
+#try delay_job and server emit
+gem 'delayed_job_active_record'
+gem 'socketio-client', :git => 'https://github.com/lyondhill/socket.io-ruby-client.git'
 
 gem 'fb_graph', '1.5.4'
 
