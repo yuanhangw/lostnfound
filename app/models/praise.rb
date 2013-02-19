@@ -14,4 +14,13 @@ class Praise < ActiveRecord::Base
   default_scope :order => 'praises.created_at DESC'
 
 
+  def report_updated
+
+       Messenger.send_message!('praise_updated', ">>>>>>>>>>>>>>>>PRAISE UPDATED<<<<<<<<<<<<")
+ 
+  end
+  handle_asynchronously :report_updated, :run_at => Proc.new { 60.seconds.from_now }
+
+      
+
 end

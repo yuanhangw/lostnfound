@@ -16,7 +16,7 @@
 <script src="http://hidden-brook-5001.jit.su/socket.io/socket.io.js"></script>
 <script>
  
-  var socket = io.connect('http://hidden-brook-5001.jit.su',{port:80})
+  var socket = io.connect('http://localhost',{port:5000})
    
    socket.on('connect', function(){
    		socket.emit('add_user', $('#current_user').text());

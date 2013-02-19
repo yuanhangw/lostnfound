@@ -10,4 +10,15 @@ class Wolf < ActiveRecord::Base
   validates :user_id, :presence => true
 
   default_scope :order => 'wolves.created_at DESC'
+
+
+
+
+  def report_updated
+
+       Messenger.send_message!('new_wolf', ">>>>>>>>>>>>>>>>WOLF UPDATED<<<<<<<<<<<<")
+ 
+  end
+  handle_asynchronously :report_updated, :run_at => Proc.new { 0.seconds.from_now }
+
 end

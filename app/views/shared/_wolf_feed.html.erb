@@ -4,6 +4,7 @@
   <div class="card">
 
       <div id="online_user_count"></div>
+      <div id="system_status"></div>
 
       <div class="title">
           <a class ="lead"> Event Feed </a>
@@ -48,12 +49,18 @@
   <script>
     
    
-    var socket = io.connect('http://hidden-brook-5001.jit.su',{port:80})
+    var socket = io.connect('http://localhost',{port:5000})
      
      socket.on('connect', function(){
         socket.emit('add_user', $('#current_user').text());
         console.log('connected seding user name' + $('#current_user').text());
      });
+
+     socket.on('new_wolf_broadcast',function(){
+        $('#system_status').append('new wolf coming to town');
+        console.log('praise_update received!!!!!!!!!!!!!!')
+     });
+
 
      socket.on('updateusers', function(usernames){
 
@@ -66,16 +73,16 @@
         $('#online_user_count').append(user_count);
         $('#online_user_count').toggleClass('animated flash');
 
-        $( ".name" ).each(function( index ) {
+        // $( ".name" ).each(function( index ) {
 
-            console.log( index + ": " + $(this).data("name") );
-            $(this).toggleClass("online",(usernames[$(this).text()]!=null))
-            if (usernames[$(this).text()]==null){
-              console.log('i am not online');
-            }else{
-              console.log('i am ONLINE');
-            }
-        });
+        //     console.log( index + ": " + $(this).data("name") );
+        //     $(this).toggleClass("online",(usernames[$(this).text()]!=null))
+        //     if (usernames[$(this).text()]==null){
+        //       console.log('i am not online');
+        //     }else{
+        //       console.log('i am ONLINE');
+        //     }
+        // });
 
 
 

@@ -23,7 +23,8 @@ gem 'omniauth-openid'
 
 #try delay_job and server emit
 gem 'delayed_job_active_record'
-gem 'socketio-client', :git => 'https://github.com/lyondhill/socket.io-ruby-client.git'
+gem 'socketio-client', '~> 0.0.3'
+gem 'daemons'
 
 gem 'fb_graph', '1.5.4'
 
