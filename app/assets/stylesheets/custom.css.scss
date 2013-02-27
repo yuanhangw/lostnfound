@@ -1,5 +1,3 @@
-
-
 // using 'Cerulean' bootswatch
 //
 // First import journal variables
@@ -16,9 +14,6 @@
 
 
 
-
-
-
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -29,16 +24,24 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
-html {
-  overflow-y: scroll;
-
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+margin: 0;
+padding: 0;
 }
 
-body {
-  padding-top: 60px;
+html {
+  overflow-y: scroll;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+} 
 
-    background: -webkit-linear-gradient(315deg, rgba(0, 170, 255, 0.1), rgba(220, 110, 10, 0.2) 80%), /* -webkit-linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(220, 255, 255, 0.2)), */ url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/shattered.png);
-background-attachment: fixed, fixed;
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: -webkit-linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
+    background-color: #e8ebef;
+    background-repeat: no-repeat;
+
 }
 
 section {
@@ -94,46 +97,151 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
 h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
+display: block;
+font-size: 2em;
+font-weight: bold;
 }
-
-h2 {
-  font-size: 1.7em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  font-weight: normal;
-  color: $grayLight;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
 
 /* header */
 
-#logo {
+header {
+  
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+
+  logo{
+  font-family: 'Passion One', cursive;
+  font-size: 28px;
+  font-weight: 500;
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
+  margin-top: 20px;
+  width: auto;
+  height: 31px;
+  
   }
+  logo:hover{
+  opacity:0.8;
+  cursor: pointer;
+  }
+
+  .navigation{
+  padding-top: 24px;
+  position: relative;
+    .signin{
+    float: right;
+        span{
+          display: block;
+          background: #fafbfc;
+          padding: 5px 17px;
+          height: 16px;
+          line-height: 16px;
+          font-weight: bold;
+          color: #333;
+          text-shadow: 0 1px 0 #fff;
+          background: transparent;
+
+          background: -webkit-linear-gradient(#fff, #eff1f4);
+          background: linear-gradient(#fff, #eff1f4);
+
+          -webkit-box-shadow: inset 0 1px 0 #fff;
+          box-shadow: inset 0 1px 0 #fff;
+
+          -webkit-border-radius: 13px;
+          border-radius: 13px;
+        }
+        span:active{
+        background: #f6f9fc;
+        }
+
+        a{
+          font-size: 12px;
+          text-decoration: none;
+          padding: 1px;
+          height: 26px;
+          display: block;
+          position: relative;
+          top: 0px;
+          margin-left: 4px;
+          background: #adb2bb;
+
+          background: -webkit-linear-gradient(#ccd0d6, #adb2bb);
+          background: linear-gradient(#ccd0d6, #adb2bb);
+
+          -webkit-border-radius: 14px;
+          border-radius: 14px;
+
+          -webkit-box-shadow: 0px 1px 0 rgba(0,0,0,0.05);
+          box-shadow: 0px 1px 0 rgba(0,0,0,0.05);
+
+          -webkit-transition: -webkit-box-shadow 0.1s ease-in-out;
+          -moz-transition: -moz-box-shadow 0.1s ease;   
+          }
+          a:hover{
+          -webkit-box-shadow: 0px 0px 5px rgba(94, 168, 236, 0.5);
+          box-shadow: 0px 0px 5px rgba(94, 168, 236, 0.5);
+
+          }
+    }
+
+    .global{
+
+      float: right;
+      margin-right: 12px;
+      position: relative;
+      padding: 2px 6px;
+      li{
+        display: block;
+        float: left;
+        padding: 0 2px;
+        list-style: none;
+        a{
+          display: block;
+          font-size: 12px;
+          color: #595F69;
+          padding: 3px 10px;
+          text-shadow: 0 1px 0 #fff;
+          text-decoration: none;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+          border-radius: 10px;
+          -webkit-transition: color 150ms ease;
+        }
+      }
+    }
+    .global::before{
+    right: 1px;
+    background-image: -webkit-linear-gradient(rgba(181,188,202,0), rgba(181,188,202,0.75) 30%, rgba(181,188,202,0.75) 70%, rgba(181,188,202,0));
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: -1px;
+    bottom: -2px;
+    background-repeat: no-repeat;
+    background-size: 1px 100%;
+    }
+
+    .global::after{
+    right: 0px;
+    background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.6) 50%, rgba(255,255,255,0));    
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: -1px;
+    bottom: -2px;
+    background-repeat: no-repeat;
+    background-size: 1px 100%;
+    }
+
+
+  }
+
 }
 
 

@@ -9,120 +9,36 @@
 
 
     <title><%= yield(:title) %></title>
+    <link href='http://fonts.googleapis.com/css?family=Passion+One:400,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    "application", :media=> "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
 
-
-<style>
-  body{
-
-        padding-top: 80px;
-        padding-bottom: 40px;
-        padding-left: 40px;
-        padding-right: 40px;    
-}
-
-
-  .well{
-
-
-        opacity: 0.85;
-  }
-
-
-    /* CUSTOMIZE THE NAVBAR
-    -------------------------------------------------- */
-
-    /* Special class on .container surrounding .navbar, used for positioning it into place. */
-    .navbar-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      margin-top: 5px;
-      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-    }
-    .navbar-wrapper .navbar {
-
-    }
-
-    /* Remove border and change up box shadow for more contrast */
-    .navbar .navbar-inner {
-      border: 0;
-      opacity: 0.7;
-      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-              box-shadow: 0 2px 10px rgba(0,0,0,.25);
-    }
-
-    /* Downsize the brand/project name a bit */
-    .navbar .brand {
-      /*padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-      padding-left: 30px;
-      padding-right: 10px;
-      margin: 0 0 0 -5px;
-      font-size: 16px;
-      font-weight: bold;
-      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-    }
-
-    /* Navbar links: increase padding for taller navbar */
-    .navbar .nav > li > a {
-      padding: 15px 20px;
-    }
-
-    /* Offset the responsive button for proper vertical alignment */
-    .navbar .btn-navbar {
-      padding-right:30px;
-      margin-top: 10px;
-    }
-
-
-
-    /* CUSTOMIZE THE NAVBAR
-    -------------------------------------------------- */
-        
-
-</style>
-
-
-
-</head>
+  </head>
 
   <body>
 
-  <div class="container">
 
-    <%= render 'layouts/header' %>
+  <!-- flash notice -->
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %> 
 
+  <!-- header -->
+  <%= render 'layouts/header' %>
 
-
-    <div class="content container-fluid">
-
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %> 
-
-          <div class ="row-fluid">
-  
-              <%= yield %>
-
-          </div>
-
-
-
-    </div>
+  <!-- main body -->
+  <div class ="row-fluid">
+    <%= yield %>
   </div>
 
-    <%= render 'layouts/footer' unless @skip_footer %>   
+  <!-- footer -->
+  <%= render 'layouts/footer' unless @skip_footer %>   
 
-    <%= debug(params) if Rails.env.development? %>
-
-
-
+  <!-- debug -->
+  <%= debug(params) if Rails.env.development? %>
 
   </body>
+
 </html>
