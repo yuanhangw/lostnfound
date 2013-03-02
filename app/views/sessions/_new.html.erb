@@ -1,36 +1,29 @@
-      <div class ="well well-small">
-                
-                      <div class="title">
-                            <a class ="lead">Sign in </a><small>with</small>
-                      </div>
-                      <div class="divider"></div>
 
-    
-              <a href="/auth/facebook" class="btn btn-primary btn-small btn-block"><i class="icon-white icon-facebook"></i> Facebook </a>
-              <a href="/auth/twitter" class="btn btn-info btn-small btn-block"><i class="icon-white icon-twitter"></i>  Twitter </a>
-              <a href="/auth/google_oauth2" class="btn btn-success btn-small btn-block"><i class="icon-white icon-google-plus-sign"></i>  Google </a>
-
-
-      </div>
-
-      <div class ="well well-small">
                 
              <%= form_for(:session, url: sessions_path) do |f| %>
-
-                      <div class="title">
-                            <a class ="lead">Sign in</a> <small> like a true bolloonman</small>
-                      </div>
-                      <div class="divider"></div>
 
               <%= f.text_field :email, class: "input block level",placeholder: "email" %>
 
               <%= f.password_field :password, class: "input block level", placeholder: "password" %>
 
-              <%= f.submit "Sign in", class: "btn btn-small btn-info" %>
-
+  
+                <div class="buttomcontainer">
+                <%= f.submit "Sign in", class: "buttom" %>
+                </div>
 
             <% end %>
+            <div class="signinwith">
+              Sign in with
+            </div>
 
-      </div>
-                
-  
+          <ul class="signinmethod">
+            <li>
+              <a href="/auth/facebook"><i class="icon-white icon-facebook"></i> Facebook </a>
+            </li>
+            <li>
+              <a href="/auth/twitter"><i class="icon-white icon-twitter"></i>  Twitter </a>
+            </li>
+            <li>
+              <a href="/auth/google_oauth2"><i class="icon-white icon-google-plus-sign"></i>  Google </a>
+            </li>
+          </ul>

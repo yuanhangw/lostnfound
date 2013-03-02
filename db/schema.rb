@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218073823) do
+ActiveRecord::Schema.define(:version => 20130302202014) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,23 @@ ActiveRecord::Schema.define(:version => 20130218073823) do
   add_index "praises", ["user_id", "shoot_id"], :name => "index_praises_on_user_id_and_shoot_id", :unique => true
   add_index "praises", ["user_id"], :name => "index_praises_on_user_id"
 
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
   create_table "shoots", :force => true do |t|
     t.integer  "user_id"
     t.integer  "smoke_id"
@@ -136,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20130218073823) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "reward"
   end
 
   add_index "wolves", ["user_id", "created_at"], :name => "index_wolves_on_user_id_and_created_at"

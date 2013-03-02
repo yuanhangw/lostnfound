@@ -31,6 +31,12 @@ gem 'fb_graph', '1.5.4'
 gem 'json'
 gem 'd3_rails'
 
+#text_editor 
+gem 'redactor-rails'
+gem "carrierwave"
+gem "mini_magick"
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

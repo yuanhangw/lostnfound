@@ -9,8 +9,7 @@
 
 
     <title><%= yield(:title) %></title>
-    <link href='http://fonts.googleapis.com/css?family=Passion+One:400,700' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag    "application", :media=> "all" %>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>    <%= stylesheet_link_tag    "application", :media=> "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
@@ -29,9 +28,7 @@
   <%= render 'layouts/header' %>
 
   <!-- main body -->
-  <div class ="row-fluid">
-    <%= yield %>
-  </div>
+  <%= yield %>
 
   <!-- footer -->
   <%= render 'layouts/footer' unless @skip_footer %>   
@@ -42,3 +39,15 @@
   </body>
 
 </html>
+
+<script>
+      
+          window.setTimeout(function() {
+              $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                  $(this).remove(); 
+              });
+          }, 10000);
+        
+      
+</script>
+

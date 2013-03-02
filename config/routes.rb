@@ -1,5 +1,7 @@
 Dandelion::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

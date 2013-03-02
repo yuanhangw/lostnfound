@@ -1,25 +1,6 @@
-			<div class ="span6 coolscroll">
-
-	        	<% if signed_in? %>
-	        	
-            	<%= render 'shared/wolf_feed' %>
-            	
-            	<% end %>
-
-				</div>            
-
-            <div class ="offset1 span5 "> 
-
-	            <% if signed_in? %>
-
-					<%= render 'wolves/wolf_form' %>
-
-				<% else %>
-
-		 			<%= render 'sessions/new' %>                
-		            
-					<%= render 'users/form_new' %>
-
-				<% end %>
-
-			</div>
+  <!-- banner -->
+  <%if signed_in? %>
+  <%= render 'wolves/wolf_form' %>
+  <% else %>
+  <%= render 'layouts/banner' %>
+  <% end %>

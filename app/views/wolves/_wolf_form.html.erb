@@ -1,48 +1,35 @@
-            <div class ="well well-small wolf-list">
-                
-
-              <%= form_for(@wolf) do |f| %>
-
-              <%= render 'shared/error_messages' , object: f.object%>
-
-                        <div class="title">
-                            <a class ="lead"> Ask a question </a><br> 
-                            <small>and get answer from friend's friends
-                            </small><code>?</code>
-
-                        </div>
-
-                        <div class="divider"></div>
-
-                  <div class="field">
-				          <%= f.text_area :content, placeholder: "喊两嗓子" %>
-				          </div>
-
-                  <code><%= link_to "URL to this event?", event_path %></code>
-
-                <%= f.submit "Ask", class: "btn btn-primary btn-success wolf_submit pull-right" %>
-              <% end %>
-                
-            </div>
-
-  <script>
-
-   $('form').hover(
-      function() {
-        
-        $('textarea').transition({height: "10em", delay:500}, 1000);
-        $(this).closest('form').find('input[type="submit"]').show();
-      },
-      function() {
-        $('textarea').transition({height: "3em"}, 1000);
-        $(this).closest('form').find('input[type="submit"]').hide();
-
-    });
-
-   // $('textarea').blur(function() {
-   //   $(this).closest('form').find('input[type="submit"]').show();
-   //   $('textarea').animate({height: "3em"}, 750);
-   // });
 
 
-</script>
+    <div class ="notice_board">
+
+
+      <%= form_for(@wolf) do |f| %>
+
+        <%= render 'shared/error_messages' , object: f.object%>
+              <i class="press icon-file-alt icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>Write a description</h2>
+              </div>
+
+              <%= f.text_area :content, rows: "30", cols: "14", class:"redactor", placeholder: "what you are looking for ... ?" %>
+              
+              <i class="press icon-magnet icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>Put up a reward</h2>
+              </div>
+
+              <%= f.text_field :reward, class: "input", placeholder: "$500 or 500 free beer" %>
+
+              <i class="press icon-qrcode icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>Generate the token</h2>
+              </div>
+
+              <div class="buttomcontainer">
+              <%= f.submit "Generate Search Token", class: "buttom"%>
+              </div>
+
+      <% end %>
+
+    </div>
+

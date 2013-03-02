@@ -5,10 +5,31 @@
         <logo>lost and found</logo>
 
         <div class="navigation">
-        
-          <div class="signin">
-            <a id='signin' href="https://manage.stripe.com/login"><span>Sign In</span></a>
-          </div>
+
+        <% if signed_in? %>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Your account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+
+          <% else %>
+
+            <div class="signin">
+            <a id='signin' href="/signin"><span>Sign In</span></a>
+            </div>
+
+          <% end %>
+
 
           <ul class="global">
             <li><%= link_to "Home", root_path %></li>
