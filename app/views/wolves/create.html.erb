@@ -18,16 +18,12 @@
                     <h2>QR code</h2>
               </div>
 
-              <!--               
-              <div class="token">
-              <%= @smoke.url_token %>
-              </div> -->
 
               <div class="qrcode">
                 <%= raw @qrsvg %>
               </div>
 
-              <i class="press icon-info-sign icon-3x pull-left icon-muted"></i>
+              <i class="press icon-info icon-3x pull-left icon-muted"></i>
               <div class="titlearea">
                     <h2>How to use it</h2>
               </div>
@@ -52,21 +48,6 @@
 
                 <i class="press icon-bullhorn icon-2x pull-left"></i>
                 <p class="lead">“Life is like riding a bicycle. To keep your balance, you must keep moving.” </p>
-
-
-                <table>
-                 <% @qr.modules.each_index do |x| -%>
-                   <tr>
-                   <% @qr.modules.each_index do |y| -%>
-                    <% if @qr.dark?(x,y) -%>
-                    <td class="black"/>
-                    <% else -%>
-                    <td class="white"/>
-                    <% end -%>
-                   <% end -%>
-                   </tr>
-                 <% end -%>
-                </table>
 
 
 
