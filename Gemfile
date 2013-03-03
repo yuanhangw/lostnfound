@@ -33,6 +33,11 @@ gem 'd3_rails'
 
 # generate QR code
 gem  'rqrcode'
+gem  'rqrcode_to_svg'
+
+# url shortener
+
+gem  'google_url_shortener'
 
 #text_editor 
 gem 'redactor-rails'

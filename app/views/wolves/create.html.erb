@@ -3,35 +3,57 @@
     <div class ="notice_board">
 
 
-              <i class="press icon-file-alt icon-3x pull-left icon-muted"></i>
-              <div class="titlearea">
-                    <h2>Description</h2>
+              <div class="wraparound">
+                <i class="press icon-bullhorn icon-3x pull-left"></i>
+                <p class="lead">Mobilize your friend to help <%=@wolf.user.name%> </p>
+                <h4 class="pull-right">Reward is <%= @wolf.reward %></h4>
               </div>
 
               <div class="message">
               <%=raw @wolf.content%>
               </div>
-             
-              
-              <i class="press icon-magnet icon-3x pull-left icon-muted"></i>
-              <div class="titlearea">
-                    <h2>Reward</h2>
-              </div>
-
-              <div class="reward">
-              <%= @wolf.reward %>
-              </div>
 
               <i class="press icon-qrcode icon-3x pull-left icon-muted"></i>
               <div class="titlearea">
-                    <h2>Your search token</h2>
+                    <h2>QR code</h2>
               </div>
 
+              <!--               
               <div class="token">
               <%= @smoke.url_token %>
-              </div>
+              </div> -->
 
               <div class="qrcode">
+                <%= raw @qrsvg %>
+              </div>
+
+              <i class="press icon-info-sign icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>How to use it</h2>
+              </div>
+
+
+              <div class= "howto">
+                <p></p>
+                <p class="lead">Mobilize through social network, emails </p><br>
+
+                <p> Send out a short message inluding this link  <code><%=@url %></code> and state the reward. Ask people to mobilize through their network to help you. Helper will be rewarded even if he/she/it doesn't find it directly but <strong>leads to</strong> the found</p></br>
+
+                <p>The token embeded in the URL will determine one's position in the search network and how much reward he/she/it receives.</p><br>
+
+
+                <p class="lead">Mobilize through poster</p><br>
+
+                <p> </br>
+
+                <p>Simply print out this page</p><br>
+
+                <div class="poster">
+
+                <i class="press icon-bullhorn icon-2x pull-left"></i>
+                <p class="lead">“Life is like riding a bicycle. To keep your balance, you must keep moving.” </p>
+
+
                 <table>
                  <% @qr.modules.each_index do |x| -%>
                    <tr>
@@ -45,28 +67,16 @@
                    </tr>
                  <% end -%>
                 </table>
-              </div>
 
-              <i class="press icon-bullhorn icon-3x pull-left icon-muted"></i>
-              <div class="titlearea">
-                    <h2>Broadcast the request</h2>
-              </div>
 
-              <div class="social_demo">
 
-                <ul >
-                  <li>
-                    <a href="/auth/facebook"><i class="icon-white icon-facebook"></i> Facebook </a>
-                  </li>
-                  <li>
-                    <a href="/auth/twitter"><i class="icon-white icon-twitter"></i>  Twitter </a>
-                  </li>
-                  <li>
-                    <a href="/auth/google_oauth2"><i class="icon-white icon-google-plus-sign"></i>  Google </a>
-                  </li>
-                </ul>
+                </div>
+
 
               </div>
+
+
+
 
     </div>
 

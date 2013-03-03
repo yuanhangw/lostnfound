@@ -1,6 +1,8 @@
 class WolvesController < ApplicationController
 
   require 'rqrcode'
+  Google::UrlShortener::Base.api_key = "AIzaSyDSLr8Nouou-Lvx7TjoxiWmKQHXfxd9cVo"
+
   before_filter :signed_in_user, :only => [:new, :create, :edit, :destroy]
 
 
@@ -32,7 +34,12 @@ class WolvesController < ApplicationController
       
       end
 
+      # generate QR code 
       @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token, size: 10)
+
+      @qrsvg = @qr.to_svg(:px =>2)
+      # generate shorten url from google API
+      @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}")
 
       # flash the success message  
       flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
