@@ -1,4 +1,6 @@
 class WolvesController < ApplicationController
+
+  require 'rqrcode'
   before_filter :signed_in_user, :only => [:new, :create, :edit, :destroy]
 
 
@@ -30,15 +32,17 @@ class WolvesController < ApplicationController
       
       end
 
+      @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token, size: 10)
+
       # flash the success message  
-      flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}"
+      flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
       # ---> comment out redirect to get ajax response
-      redirect_to root_path
+      #redirect_to root_path
 
       # add post to social media instead of included link in the flash
     else
       # ---> comment out redirect to get ajax response 
-      redirect_to root_path
+      #redirect_to root_path
     end
   end
  

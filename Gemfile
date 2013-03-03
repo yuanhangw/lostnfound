@@ -31,6 +31,9 @@ gem 'fb_graph', '1.5.4'
 gem 'json'
 gem 'd3_rails'
 
+# generate QR code
+gem  'rqrcode'
+
 #text_editor 
 gem 'redactor-rails'
 gem "carrierwave"
