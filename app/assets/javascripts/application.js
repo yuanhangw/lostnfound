@@ -16,3 +16,5 @@
 //= require bootstrap
 //= require_tree .
 //= require redactor-rails
+//= require bootstrap-wysihtml5
+//= require bootstrap-button  

@@ -6,7 +6,10 @@ class Wolf < ActiveRecord::Base
   has_many :shoots, :through => :smokes
   has_many :praises, :through => :shoots
 
-  validates :content, :presence => true, :length => { :maximum => 140 }
+
+  # validation is turned off to avoid a problem where double tab at the 
+  # beginning of the textarea is considered :presence=false. 
+  # validates :content, :presence => true, :length => { :maximum => 800 }
   validates :user_id, :presence => true
 
   default_scope :order => 'wolves.created_at DESC'

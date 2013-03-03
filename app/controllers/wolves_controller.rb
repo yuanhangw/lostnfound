@@ -1,6 +1,7 @@
 class WolvesController < ApplicationController
   before_filter :signed_in_user, :only => [:new, :create, :edit, :destroy]
 
+
   def new
   end
 
@@ -11,6 +12,7 @@ class WolvesController < ApplicationController
       # add root smoke
       @smoke = Smoke.create(:user_id => current_user.id, :wolf_id =>@wolf.id, :parent_user_id => current_user.id)
       
+      # post the search request to twitter or facebook. 
       unless current_user.authorizations.find_by_provider("twitter").nil?
 
       auth = current_user.authorizations.find_by_provider("twitter")
@@ -28,10 +30,14 @@ class WolvesController < ApplicationController
       
       end
 
+      # flash the success message  
       flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}"
+      # ---> comment out redirect to get ajax response
       redirect_to root_path
+
       # add post to social media instead of included link in the flash
     else
+      # ---> comment out redirect to get ajax response 
       redirect_to root_path
     end
   end

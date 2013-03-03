@@ -36,6 +36,9 @@ gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
 
+#another text_ediot
+gem 'bootstrap-wysihtml5-rails'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

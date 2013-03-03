@@ -47,6 +47,8 @@ GEM
     bootstrap-sass (2.1.0.0)
     bootstrap-will_paginate (0.0.6)
       will_paginate
+    bootstrap-wysihtml5-rails (0.3.1.19)
+      railties (>= 3.0)
     bootswatch-rails (0.3.1)
       railties (>= 3.1)
     bourbon (3.0.1)
@@ -275,6 +277,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
+  bootstrap-wysihtml5-rails
   bootswatch-rails
   capybara (= 1.1.2)
   carrierwave
