@@ -9,7 +9,7 @@ class Wolf < ActiveRecord::Base
 
   # validation is turned off to avoid a problem where double tab at the 
   # beginning of the textarea is considered :presence=false. 
-  # validates :content, :presence => true, :length => { :maximum => 800 }
+  validates :content, :presence => true
   validates :user_id, :presence => true
 
   default_scope :order => 'wolves.created_at DESC'
