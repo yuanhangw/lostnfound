@@ -83,12 +83,12 @@ class WolvesController < ApplicationController
 
 
     # generate QR code 
-    @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token, size: 10)
+    @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token, size: 10)
 
     @qrsvg = @qr.to_svg(:px =>2)
     # generate shorten url from google API
     # turned off to do local test
-    @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}")
+    @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}")
     
     #@url =  "http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
 
