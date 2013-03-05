@@ -39,7 +39,9 @@ class WolvesController < ApplicationController
 
       @qrsvg = @qr.to_svg(:px =>2)
       # generate shorten url from google API
+      # turned off to do local test
       @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}")
+      #@url =  "http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
 
       # flash the success message  
       flash[:success] = "Event created! posted to  t/f,  Link: #{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
@@ -65,16 +67,31 @@ class WolvesController < ApplicationController
   end
 
   def show
+    @skip_footer = true
     @wolf = Wolf.find(params[:id])
     @smokes = @wolf.smokes
 
-    if current_user.smoked?(@wolf).nil?
-      @smoke = current_user.wolf_shot?(@wolf).smoke
-    elsif current_user.smoked?(@wolf).parent.nil?
-      @smoke = current_user.smoked?(@wolf)
-    else
-      @smoke = current_user.smoked?(@wolf).parent
-    end 
+    # if current_user.smoked?(@wolf).nil?
+    #   @smoke = current_user.wolf_shot?(@wolf).smoke
+    # elsif current_user.smoked?(@wolf).parent.nil?
+    #   @smoke = current_user.smoked?(@wolf)
+    # else
+    #   @smoke = current_user.smoked?(@wolf).parent
+    # end 
+
+    @smoke = current_user.smoked?(@wolf)
+
+
+    # generate QR code 
+    @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token, size: 10)
+
+    @qrsvg = @qr.to_svg(:px =>2)
+    # generate shorten url from google API
+    # turned off to do local test
+    @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}")
+    
+    #@url =  "http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
+
 
     if signed_in?
       @wolf_feed_items = current_user.wolf_feed

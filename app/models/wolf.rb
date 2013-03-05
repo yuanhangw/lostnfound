@@ -1,5 +1,5 @@
 class Wolf < ActiveRecord::Base
-  attr_accessible :content, :reward 
+  attr_accessible :content, :reward, :title
   belongs_to :user
   has_many :smokes, :foreign_key => "wolf_id", :dependent => :destroy
   has_many :smokers, :through => :smokes, :source => :user

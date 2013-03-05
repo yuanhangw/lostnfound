@@ -1,45 +1,70 @@
-            <div class ="eventfeed span6 coolscroll">
 
-	            <% if signed_in? %>
-
-            	<%= render 'shared/wolf_feed' %>
-
-            	<% else %>
-
-            	<% end %>
-
-            </div>
+    <div class ="notice_board">
 
 
+              <div class="wraparound">
+                <i class="press icon-bullhorn icon-3x pull-left"></i>
+                <p class="lead">Help <%=@wolf.user.name%> to expand the search network</p>
+                <h4 class="pull-right">Reward is <%= @wolf.reward %></h4>
+              </div>
 
-            <div class ="offset1 span5 "> 
+              <div class="message">
+              <%=raw @wolf.content%>
+              </div>
 
-	        <% if signed_in? %>
 
-	            <!-- need to implement friendly signin here -->
-	            <!-- smokes has before_filter -->	  
+              <i class="press icon-heart icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>Think you can help?</h2>
+              </div>
 
-	            <div class =" well " > 
 
-	              <div class="title">
-      				<a class ="lead"> Q & A </a><br> 
+				 <%=form_for(current_user.smokes.build(:user_id => current_user.id, :wolf_id => @wolf.id, :parent_user_id => @smoke.user_id, :parent_id => @smoke.id)) do |f| %>
+				  <div>
+				    <%= f.hidden_field :user_id %>
+				    <%= f.hidden_field :wolf_id %>
+				    <%= f.hidden_field :parent_user_id %>
+				    <%= f.hidden_field :parent_id %>
 				  </div>
 
-				  <div class="divider"></div> 
-
-					<%= render 'smokes/show' %>
-				  
+				  <div class="buttomcontainer">
+				  <%= f.submit "Join the search network", :class => "buttom" %>
 				  </div>
-				
-			<% else %>
 
-		 			<%= render 'sessions/new' %>                
-		            
-					<%= render 'users/form_new' %>
-
-			<% end %>
-
-			</div>
+				<% end %>
 
 
+
+              <i class="press icon-info-sign icon-3x pull-left icon-muted"></i>
+              <div class="titlearea">
+                    <h2>How does this works</h2>
+              </div>
+
+              <div class= "howto">
+
+                <p>Click 'Join the search' to generate your own link, QRcode and poster, and start to expand the search network. </p><br>
+
+                <p>You will be rewarded even if you didn't find it directly but <strong>lead to</strong> the finding through your extended search network.</p><br>
+
+                <p> Let's say <%=@wolf.user.name%> put a reward of $ 500. If you help to send the request to Fasil, and Fasil twitted it to his friend Roland and luckily Roland find it!  <%=@wolf.user.name%> will pay Roland $ 500, Fasil $250 and you $125. </p></br>
+
+                <p>So ask people to join your search network through the link to help <%=@wolf.user.name%> and increase your chance of getting the reward. </p><br>
+
+                
+
+                <div class="poster">
+                	<p class="lead">"Tess: I will not be Part of This conspiracy!" <br> 
+                		"Flan: It's not a conspiracy, it's a family!” </p>
+                	<p class="pull-right" style="font-size:12px "> - Six Degrees of Separation (1993)</p>
+
+	            </div>
+	          </div>
+
+
+
+
+    </div>
+
+
+ 
 

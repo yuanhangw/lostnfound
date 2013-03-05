@@ -1,14 +1,22 @@
 class SmokesController < ApplicationController
-  before_filter :signed_in_user  
+
+  require 'rqrcode'
+  Google::UrlShortener::Base.api_key = "AIzaSyDSLr8Nouou-Lvx7TjoxiWmKQHXfxd9cVo"
+
+
+  before_filter :signed_in_user
 
 
   def new
   end
 
   def create
-    @smoke = Smoke.new(params[:smoke])
+    @smoke = current_user.smokes.build(params[:smoke])
     @smoke.save!
-    redirect_to(:back)
+    @wolf = @smoke.wolf
+
+    #redirect_to(:back)
+
     if @smoke.save
 
       unless current_user.authorizations.find_by_provider("twitter").nil?
@@ -28,10 +36,22 @@ class SmokesController < ApplicationController
       
       end
 
+      # generate QR code 
+      @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token, size: 10)
+
+      @qrsvg = @qr.to_svg(:px =>2)
+      # generate shorten url from google API
+      # turned off to do local test
+      @url =Google::UrlShortener.shorten!("http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}")
+      #@url =  "http://"+"#{URI.parse(url_for(:only_path => false)).host + ":3000/spread/" + @smoke.url_token}"
+
+
 
       flash[:sucess] = "Event Spreaded! posted to f/t,  Link: #{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}"
     else
+
     end
+
 
 #    @wolf = @smoke.wolf
 #    respond_to do |format|

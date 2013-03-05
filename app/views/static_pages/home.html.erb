@@ -1,6 +1,16 @@
   <!-- banner -->
   <%if signed_in? %>
-  <%= render 'wolves/wolf_form' %>
+	  <%if current_user.wolf_feed.empty? %>
+
+	  	<div class="offset3 span6">
+	    <%= render 'wolves/wolf_form' %>
+		</div>
+
+	  <% else %>
+	  	<div class="offset4 span4">
+	  	<%= render 'shared/wolf_feed' %>
+	  </div>
+	  <% end %>
   <% else %>
-  <%= render 'layouts/banner' %>
+  	<%= render 'layouts/banner' %>
   <% end %>

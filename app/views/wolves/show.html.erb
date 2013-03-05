@@ -1,42 +1,13 @@
-            <div class ="span5  coolscroll">
-
-              <% if signed_in? %>
+            <div class ="offset1 span4">
 
               <%= render 'shared/wolf_feed' %>
-
-              <% else %>
-
-              <% end %>
 
             </div>
 
 
 
-            <div class =" offset1 span6 "> 
+            <div class =" offset1 span4 "> 
 
-              <% if signed_in? %>
-
-              <!-- need to implement friendly signin here -->
-              <!-- smokes has before_filter -->   
-
-              <div class =" well " >     
-
-                <div class="title">
-                    <a class ="lead"> Event Details </a><br> 
-                </div>
-
-                <div class="divider"></div>
-       
-                <%= render 'wolves/tabs' %>
-
-              </div>
-              
-              <% else %>
-
-                <%= render 'sessions/new' %>                
-                      
-                <%= render 'users/form_new' %>
-
-              <% end %>
+                <%= render 'wolves/wolf' %>
 
             </div>

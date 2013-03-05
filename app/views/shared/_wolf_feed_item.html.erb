@@ -4,24 +4,30 @@
     <div class= " wolf<%=wolf_feed_item.id%>">
         <!--event summary -->
         <div class="wolf_content">
-            <blockquote>
-            <i class="icon-quote-left icon-4x pull-left icon-muted"></i>
 
-            <p><%= raw wolf_feed_item.content %></p>
+            <div class="wraparound-small">
+                <p class="pull-right"><%= wolf_feed_item.user.name%> offer a reward of <%= wolf_feed_item.reward %></p>
+            </div>
+
+            <br><br>
+            <div class="wraparound-status">
+                <div class="thing-status red">
+                    <%= wolf_feed_item.smokers.count - 1%>
+                </div>
+                <div class="thing-status blue">
+                    <%= wolf_feed_item.shoots.count %>
+                </div>
+                <div class="thing-status green">
+                    <%= wolf_feed_item.praises.count %>
+                </div>            
+            </div>
+
+            <div class="wolf_title">
+            <div class="lead"><%= wolf_feed_item.title %></div>
 
             <%=link_to "detail", wolf_feed_item%>
-            
-            </blockquote>
+            </div>
 
-            <div class="thing-status red">
-                <%= wolf_feed_item.smokers.count - 1%>
-            </div>
-            <div class="thing-status blue">
-                <%= wolf_feed_item.shoots.count %>
-            </div>
-            <div class="thing-status green">
-                <%= wolf_feed_item.praises.count %>
-            </div>
 
             <!--event summary -->
 
