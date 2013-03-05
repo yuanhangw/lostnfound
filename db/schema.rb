@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20130305090541) do
   create_table "shoots", :force => true do |t|
     t.integer  "user_id"
     t.integer  "smoke_id"
-    t.text     "content",    :limit => 255
+    t.text     "content",    :limit => nil
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20130305090541) do
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
   create_table "wolves", :force => true do |t|
-    t.text     "content",    :limit => 255
+    t.text     "content",    :limit => nil
     t.integer  "user_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
