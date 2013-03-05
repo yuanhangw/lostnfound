@@ -1,4 +1,2 @@
 $(".new_shoot").hide(700);
-$(".current_user_answer").html("<%= escape_javascript( render(:partial => "shoot") ) %>");
-$(".status").append("<small><span> <%=time_ago_in_words(@shoot.created_at)%> ago </span></small><br>");
-$(".eventfeed").html("<%= escape_javascript( render(:partial => "shared/wolf_feed") ) %>");
+$(".shoot_feed").html("<%= escape_javascript( render(:partial => "shared/shoot_feed") ) %>");
