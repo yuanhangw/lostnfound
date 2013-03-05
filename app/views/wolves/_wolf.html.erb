@@ -15,6 +15,9 @@
               <%=raw @wolf.content%>
               </div>
 
+              <%= render 'shared/shoot_feed' %>
+
+
               <i class="press icon-qrcode icon-3x pull-left icon-muted"></i>
               <div class="titlearea">
                     <h2>QR code</h2>
@@ -48,6 +51,19 @@
                 <p class="lead">Mobilize through poster</p>
 
                 <p>Print out this page, the QR code is the link to your search network.</p><br>
+
+                <!-- this section should be hidden for owner of the wolf -->
+                <% unless @wolf.user == current_user %>
+                
+	                <div class="titlearea">
+	                    <h2>Submit a tip</h2>
+	                </div>
+	                
+		    	    <%= render 'shared/shoot', :smoke => @smoke %>
+	    	    
+	    	    <% end %>
+
+
 
                 <div class="poster">
 

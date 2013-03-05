@@ -1,27 +1,22 @@
-<%= form_for current_user.shoots.build(:user_id => current_user.id, :smoke_id => smoke.id),:remote => true do |f| %>
-  <div>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :smoke_id %>
-    <div class="field">
-      <%= f.text_area :content, :placeholder => "I have the answer !!!"%>
+
+  <%= form_for current_user.shoots.build(:user_id => current_user.id, :smoke_id => smoke.id),:remote => true do |f| %>
+    <div>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :smoke_id %>
+      <div class="field">
+        <%= f.text_area :content, class: "redactor", :placeholder => "I have the answer !!!"%>
+      </div>
     </div>
-  </div>
-  <%= f.submit "Answer", :class => "btn btn-success shoot_submit pull-right" %>
-<% end %>
+
+    <div class="buttomcontainer">
+    <%= f.submit "Submit a tip", :class => "buttom" %>
+    </div>
+
+  <% end %>
 
 
-
+          
 <script>
-
-   $('.new_shoot').hover(
-      function() {
-        $('.new_shoot').find('input[type="submit"]').show();
-        //$('textarea').transition({height: "10em", delay:500}, 500);
-      },
-      function() {
-        $('.new_shoot').find('input[type="submit"]').hide();
-        //$('textarea').transition({height: "3em"}, 500);
-    });
 
    // $('textarea').blur(function() {
    //   $(this).closest('form').find('input[type="submit"]').show();

@@ -1,16 +1,6 @@
 <% if !@shoot_feed_items.nil? %>
 
-
-  <ul class="shoots fly">
     <%= render partial: 'shared/shoot_feed_item', collection: @shoot_feed_items %>
-  </ul>
-
-
-  <script>
-	stroll.bind( '.coolscroll ul' );
-  </script>
-
-
 
 <% end %>
 

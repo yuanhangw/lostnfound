@@ -1,99 +1,81 @@
-<li>
-<div class= "shoot<%=shoot_feed_item.id%>">
-    <!--event summary -->
 
-    <blockquote>
-    
-    <p><%= shoot_feed_item.content %></p>
-
-    <small>Responded by <i class="icon-user"></i> 
-        <% if User.find(shoot_feed_item.user_id) == current_user %>
-            <span class="label label-info">you</span>
-        <% else %>
-        <%=User.find(shoot_feed_item.user_id).name%>
-        <% end %>
-        through <i class="icon-bullhorn"></i>
-
-        <% if shoot_feed_item.smoke.user == current_user %>
-            <span class="label label-info">you</span>
-        <% else %>
-        <%=shoot_feed_item.smoke.user.name%>
-        <% end %>
-
-        <i class="icon-time"></i> 
-        <%= time_ago_in_words(shoot_feed_item.created_at) %> ago.
-
-        
-    </small>
-    
-    <div class="praiserlist">
-        <% unless shoot_feed_item.praises.empty? %>
-            <small>
-                <% shoot_feed_item.praises.each do |f| %>
-                <%= User.find_by_id(f.user_id).name %> - 
-                <% end %> 认为这个说法靠谱
-            </small>
-        <% end %>
-    </div>
+<div class="wraparound-shoot shoot<%=shoot_feed_item.id%>">
 
 
-    <div class="anchor">
+    <div class="vote">
  
         <% if current_user.praised?(shoot_feed_item) %>
 
-        <i class="icon-thumbs-up"></i>
-        <div class="badge badge-success", style="display:inline-block"><%= shoot_feed_item.praises.count %> </div>
+        <div class="pull-right">
+            <i class="icon-thumbs-up pull-left"></i>
+            <div style="display:inline-block"><%= shoot_feed_item.praises.count %> </div>
+        </div>
 
 
         <% else %>
             <%= form_for current_user.praises.build(:user_id => current_user.id, :shoot_id => shoot_feed_item.id), :remote => true do |f| %>
-              <div>
                 <%= f.hidden_field :user_id %>
                 <%= f.hidden_field :shoot_id %>
-              </div>
-              <i class="icon-thumbs-up"></i>
-              <div class="badge badge-success", style="display:inline-block"><%= shoot_feed_item.praises.count%> </div>
-
-              <%= f.submit "vote up", :class => "btn btn-small", :style => "inline-block" %>
+              <%= f.submit "vote up", :class => "btn btn-small pull-right", :style => "margin-left:10px"%>
               
             <% end %>    
 
         <% end %>
-
-        
-
-    <!-- anchor point to enalbe click whole field instead of click detail link in the future -->
     </div>
 
+    <i class="press icon-lightbulb icon-2x pull-left"></i>
 
-    </blockquote>
-
-    <!--event summary -->
-
+    <div class="lead"><%= raw shoot_feed_item.content %></div>
 
 
 
-</div> <!--end of wolf-->
- 
-    <script>
-
-        // $('.shoot<%=shoot_feed_item.id%>').hover(
-        //   function() {
-        //     $('.shoot<%=shoot_feed_item.id%>').find('.anchor').show();
-        //     //$('textarea').transition({height: "10em", delay:500}, 500);
-        //   },
-        //   function() {
-        //     $('.shoot<%=shoot_feed_item.id%>').find('.anchor').hide();
-        //     //$('textarea').transition({height: "3em"}, 500);
-        // });
-
-        //script for click whole area
-        $(".shoot<%=shoot_feed_item.id%>").click(function(){
-            $('.shoot_anchor').load();
-        console.log("Handler for .click() called. shoot id : <%=shoot_feed_item.id%>");
-        });
-
-    </script>
+    <small class="pull-right">Tipped by 
+        <% if User.find(shoot_feed_item.user_id) == current_user %>
+            you 
+        <% else %>
+        <%=User.find(shoot_feed_item.user_id).name%> 
+        <% end %>
+        <%= time_ago_in_words(shoot_feed_item.created_at) %> ago.        
+    </small>
+    <br>
+    
+     <div class="praiserlist pull-right">
+        <% unless shoot_feed_item.praises.empty? %>
+            <small>
+                <% shoot_feed_item.praises.each do |f| %>
+                <%= User.find_by_id(f.user_id).name %> - 
+                <% end %> voted it up
+            </small>
+        <% end %>
+    </div> 
 
 
-</li>
+
+</div>
+
+
+
+          
+<script>
+
+    $(".new_praise").bind('ajax:beforeSend', function(){
+      console.log("beforeSend");
+    });
+
+
+    $(".new_praise").bind('ajax:success', function(){
+      console.log("successful");
+    });
+
+
+    $(".new_praise").bind('ajax:complete', function(){
+      console.log("complete");
+    });
+
+   $(".new_praise").bind('ajax:error', function(){
+      console.log("errr");
+    });
+
+  
+
+</script>
