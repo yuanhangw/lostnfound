@@ -2,9 +2,7 @@
   <%if signed_in? %>
 	  <%if current_user.wolf_feed.empty? %>
 
-	  	<div class="offset3 span6">
 	    <%= render 'wolves/wolf_form' %>
-		</div>
 
 	  <% else %>
 	  	<div class="offset4 span4">

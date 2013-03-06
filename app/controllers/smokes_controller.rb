@@ -19,22 +19,22 @@ class SmokesController < ApplicationController
 
     if @smoke.save
 
-      unless current_user.authorizations.find_by_provider("twitter").nil?
+      # unless current_user.authorizations.find_by_provider("twitter").nil?
 
-      auth = current_user.authorizations.find_by_provider("twitter")
-      access_token = prepare_access_token(auth['token'], auth['secret'])
-      access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' http://' + URI.parse(url_for(:only_path => false)).host + '/spread/'+ @smoke.url_token )
+      # auth = current_user.authorizations.find_by_provider("twitter")
+      # access_token = prepare_access_token(auth['token'], auth['secret'])
+      # access_token.request(:post, "http://api.twitter.com/1/statuses/update.json", :status => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + ' http://' + URI.parse(url_for(:only_path => false)).host + '/spread/'+ @smoke.url_token )
 
-      end
+      # end
 
-      unless current_user.authorizations.find_by_provider("facebook").nil?
+      # unless current_user.authorizations.find_by_provider("facebook").nil?
 
-      auth = current_user.authorizations.find_by_provider("facebook")
-      access_token = FbGraph::User.me(auth['token'])
-      access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + 'http://' + URI.parse(url_for(:only_path => false)).host + '/spread/'+ @smoke.url_token ,
-       :name => "99 red ballon")
+      # auth = current_user.authorizations.find_by_provider("facebook")
+      # access_token = FbGraph::User.me(auth['token'])
+      # access_token.feed!(:message => @smoke.wolf.user.name + ' posted: ' + @smoke.wolf.content + 'http://' + URI.parse(url_for(:only_path => false)).host + '/spread/'+ @smoke.url_token ,
+      #  :name => "99 red ballon")
       
-      end
+      # end
 
       # generate QR code 
       @qr = RQRCode::QRCode.new(URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token, size: 10)
@@ -47,7 +47,7 @@ class SmokesController < ApplicationController
 
 
 
-      flash[:sucess] = "Event Spreaded! posted to f/t,  Link: #{URI.parse(url_for(:only_path => false)).host + "/spread/" + @smoke.url_token}"
+      flash[:sucess] = "You've joined the search network!  a unique link and QR code has been created for you. you can monitor the response from your home page"
     else
 
     end
