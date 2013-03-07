@@ -4,9 +4,12 @@
 
               <div class="wraparound">
                 <i class="press icon-bullhorn icon-3x pull-left"></i>
-                <p class="lead">Help <%=@wolf.user.name%> to expand the search network</p>
+                <p class="lead">Call up your friends to help <%=@wolf.user.name%> and win the reward togather</p>
                 <h4 class="pull-right">Reward is <%= @wolf.reward %></h4>
               </div>
+
+              <br>
+              <br>
 
               <div class="message">
               <%=raw @wolf.content%>
@@ -19,19 +22,19 @@
               </div>
 
 
-				 <%=form_for(current_user.smokes.build(:user_id => current_user.id, :wolf_id => @wolf.id, :parent_user_id => @smoke.user_id, :parent_id => @smoke.id)) do |f| %>
-				  <div>
-				    <%= f.hidden_field :user_id %>
-				    <%= f.hidden_field :wolf_id %>
-				    <%= f.hidden_field :parent_user_id %>
-				    <%= f.hidden_field :parent_id %>
-				  </div>
+      				<%=form_for(current_user.smokes.build(:user_id => current_user.id, :wolf_id => @wolf.id, :parent_user_id => @smoke.user_id, :parent_id => @smoke.id)) do |f| %>
+      				  <div>
+      				    <%= f.hidden_field :user_id %>
+      				    <%= f.hidden_field :wolf_id %>
+      				    <%= f.hidden_field :parent_user_id %>
+      				    <%= f.hidden_field :parent_id %>
+      				  </div>
 
-				  <div class="buttomcontainer">
-				  <%= f.submit "Join the search network", :class => "buttom" %>
-				  </div>
+      				  <div class="buttomcontainer">
+      				  <%= f.submit "Join the search network", :class => "buttom" %>
+      				  </div>
 
-				<% end %>
+      				<% end %>
 
 
 
@@ -43,15 +46,26 @@
               </div>
 
               <div class= "howto">
+                <p></p>
+                <p class="lead">Reward allocation</p>
 
-                <p>Click 'Join the search' to generate your own link, QRcode and poster, and start to expand the search network. </p><br>
+                <p> Say the reward is $1000. If you help to send the request to John, and John signed up and twitted it to his friend Roland and (finger crossed) Roland found what <%=current_user.name%> were looking for (hooray!). Roland will receive $500, John will receive $250 and you will recieve $120. </p>
 
-                <p>You will be rewarded even if you didn't find it directly but <strong>lead to</strong> the finding through your extended search network.</p><br>
+                <br>
 
-                <p> Let's say <%=@wolf.user.name%> put a reward of $ 500. If you help to send the request to Fasil, and Fasil twitted it to his friend Roland and luckily Roland find it!  <%=@wolf.user.name%> will pay Roland $ 500, Fasil $250 and you $125. </p></br>
+                <p class="lead">Spread the words</p>
 
-                <p>So ask people to join your search network through the link to help <%=@wolf.user.name%> and increase your chance of getting the reward. </p><br>
 
+                <p> Help to get the message out on facebook, twitter, email, blog, craigslist.</p>
+                <p> Inludes this link  <code> <%=@url%> </code> and state the reward. </p>
+                <p> Or you can simply print out this page and post it somewhere, the QRcode is the link to your page </p> <br>
+
+
+                <p class="lead">Monitor the progress</p>
+
+
+                <p> After you sent out invitations, you can monitor the development of your network from your home page. </p>
+                <p> If someone in your network submit a lead, the whole team of helpers lead up to that person will be informated. Everyone will able to vote on the lead according to its relevance.</p>
 
                 <i class="press icon-lightbulb icon-3x pull-left icon-muted"></i>
 
@@ -59,7 +73,7 @@
                     <h2>Submit a tip</h2>
                 </div>
                 
-	    	    <%= render 'shared/shoot', :smoke => @smoke %>
+	    	        <%= render 'shared/shoot', :smoke => @smoke %>
 
 
                 <div class="poster">
@@ -67,7 +81,7 @@
                 		"Flan: It's not a conspiracy, it's a family!” </p>
                 	<p class="pull-right" style="font-size:12px "> - Six Degrees of Separation (1993)</p>
 
-	            </div>
+	              </div>
 
 	          </div>
 
