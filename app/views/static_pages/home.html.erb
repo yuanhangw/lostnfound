@@ -1,4 +1,7 @@
   <!-- banner -->
+
+ <div class="row-fluid">
+
   <%if signed_in? %>
 	  <%if current_user.wolf_feed.empty? %>
 
@@ -7,8 +10,10 @@
 	  <% else %>
 	  	<div class="offset4 span4">
 	  	<%= render 'shared/wolf_feed' %>
-	  </div>
+	  	</div>
 	  <% end %>
   <% else %>
   	<%= render 'layouts/banner' %>
   <% end %>
+
+</div>
