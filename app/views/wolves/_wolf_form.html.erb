@@ -47,18 +47,22 @@
               <div class="wraparound">
                 <i class="press icon-bullhorn icon-3x pull-left"></i>
                 <p class="lead">Call up your friends to help <%=current_user.name%> and earn the reward togather</p>
-                <h4 class="pull-right">Reward is <div style="display:inline" id="reward"><div></h4>
+                <h4 class="pull-right">Reward is <div style="display:inline" id="reward"></div></h4>
               </div>
               <br>
+              <br>
+              <br>
               <div class="message">
-              <h4><div id ="title"></div></h4>
-              <br><br>
 
-              <div id ="content"></div>
+                <h4><div id ="title"></div></h4>
+                <br><br>
+
+                <div id ="content"></div>
 
               </div>
 
               <i class="press icon-qrcode icon-3x pull-left icon-muted"></i>
+
               <div class="titlearea">
                     <h2>QR code</h2>
               </div>
@@ -69,34 +73,35 @@
               </div>
 
               <i class="press icon-info-sign icon-3x pull-left icon-muted"></i>
+
               <div class="titlearea">
-                    <h2>How to use it</h2>
+                    <h2>How does it work</h2>
               </div>
 
 
               <div class= "howto">
                 <p></p>
-                <p class="lead">Mobilize online </p>
+                <p class="lead">Reward allocation</p>
 
-                <p> Get the message out on facebook, twitter, email, blog and forum whichever way you think worth pursuing. </p> <br>
+                <p> Say the reward is $1000. If you help to send the request to John, and John signed up and twitted it to his friend Roland and (finger crossed) Roland found what <%=current_user.name%> were looking for (hooray!). Roland will receive $500, John will receive $250 and you will recieve $120. </p>
 
-                <p> Inludes this link  <code></code> and state the reward. </p><br>
+                <br>
 
-                <p> Ask people <strong>personally</strong> for help is always more effective than broadcast and spam. So <strong> ask people personally</strong> to help you post the message and link on their facebook or retweet it, also forward the email if applicable.</p><br> 
-
-                <p> The incentive structure is what keep your search network growing, so explain it well in your message. The key is reward will be given not only to he who finds it, but also the whoever help to connect the chain along the way. </p><br>
-
-                <p> Let's say you put a final reward of $ 1000. If John help you to send the request to Fasil, Fasil twitted it to his friend Roland and Roland find it. Roland gets $ 500, Fasil gets $250 and John gets $125. Maximum amount you need to pay is $ 1000.</p></br>
-
-                <p> Helpers need to signup through the link to generate their own token and link, ask for token from whoever come to claim the reward.</p><br>
-
-                <p>
-
-                <p class="lead">Mobilize offline</p>
+                <p class="lead">Spread the words</p>
 
 
-                <p>Print out the page and post it to appropriate place, the QRcode is the link to your search network</p><br>
+                <p> Help to get the message out on facebook, twitter, email, blog, craigslist.</p>
+                <p> Inludes this link  <code> to be generated </code> and state the reward. </p>
+                <p> Or you can simply print out this page and post it somewhere, the QRcode is the link to your page </p> <br>
 
+
+                <p class="lead">Monitor the progress</p>
+
+
+                <p> After you sent out invitations, you can monitor the development of your network from your home page. </p>
+                <p> If someone in your network submit a lead, the whole team of helpers lead up to that person will be informated. Everyone will able to vote on the lead according to its relevance.</p>
+
+                <br><br>
                 <div class="poster">
 
                 <i class="press icon-bullhorn icon-2x pull-left"></i>
@@ -128,7 +133,7 @@ $("#wolf_title").blur(function() {
 window.setInterval(function(){
   // keep content in sync
   $("#content").html($("#wolf_content").val());
-}, 100);
+}, 2000);
 
 $("#wolf_reward").keyup(function() {
     $("#reward").html(this.value);

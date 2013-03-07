@@ -31,39 +31,49 @@
 
               <i class="press icon-info-sign icon-3x pull-left icon-muted"></i>
               <div class="titlearea">
-                    <h2>What to do next</h2>
+                    <h2>How does this work</h2>
               </div>
+
 
 
               <div class= "howto">
                 <p></p>
-                <p class="lead">Mobilize online </p>
+                <p class="lead">Reward allocation</p>
+
+                <p> Say the reward is $1000. If you help to send the request to John, and John signed up and twitted it to his friend Roland and (finger crossed) Roland found what <%=current_user.name%> were looking for (hooray!). Roland will receive $500, John will receive $250 and you will recieve $120. </p>
+
+                <br>
+
+                <p class="lead">Spread the words</p>
 
 
-                <p>Reward will be given not only to he who finds it, but also the whoever help to connect the chain along the way. </p><br>
-
-                <p> Let's say <%=@wolf.user.name%> put a reward of $ 500. If you help to send the request to Fasil, and Fasil twitted it to his friend Roland and luckily Roland find it!  <%=@wolf.user.name%> will pay Roland $ 500, Fasil $250 and you $125. </p></br>
-
-                <p> So start ask people to join your search network through this link <code><%=@url %></code>. <br><br>
-
-                <p> Asking <strong>personally</strong> and <strong>nicely</strong> for help is always more effective than broadcast and spam. </p><br>
+                <p> Help to get the message out on facebook, twitter, email, blog, craigslist.</p>
+                <p> Inludes this link  <code> <%=@url%> </code> and state the reward. </p>
+                <p> Or you can simply print out this page and post it somewhere, the QRcode is the link to your page </p> <br>
 
 
-                <p class="lead">Mobilize through poster</p>
+                <p class="lead">Monitor the progress</p>
 
-                <p>Print out this page, the QR code is the link to your search network.</p><br>
+
+                <p> After you sent out invitations, you can monitor the development of your network from your home page. </p>
+                <p> If someone in your network submit a lead, the whole team of helpers lead up to that person will be informated. Everyone will able to vote on the lead according to its relevance.</p>
+
+                <br><br>
+
+
 
                 <!-- this section should be hidden for owner of the wolf -->
                 <% unless @wolf.user == current_user %>
                 
-	                <div class="titlearea">
-	                    <h2>Submit a tip</h2>
-	                </div>
-	                
-		    	    <%= render 'shared/shoot', :smoke => @smoke %>
-	    	    
-	    	    <% end %>
+                  <div class="titlearea">
+                      <h2>Submit a tip</h2>
+                  </div>
+                  
+                  <%= render 'shared/shoot', :smoke => @smoke %>
+            
+                <% end %>
 
+                <br><br>
 
 
                 <div class="poster">
@@ -77,7 +87,6 @@
 
 
               </div>
-
 
 
 

@@ -14,6 +14,23 @@
 
 
 
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #section_to_print, #section_to_print * {
+    visibility:visible;
+  }
+  #section_to_print {
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+  }
+}
+
+
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -889,10 +906,12 @@ header {
 
 .qrcode{
 
+  width:115px;
   border-radius:5px;
   -webkit-border-radius: 5px;
   text-align: center;
-  margin: 0px 146px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 30px;
   padding:6px;
   line-height: 12px;
