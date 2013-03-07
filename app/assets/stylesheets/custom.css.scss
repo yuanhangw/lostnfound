@@ -754,21 +754,26 @@ header {
     position: relative;
   }
 
+  .big-icon{
+
+    padding-right:0px;
+    display:inline-block;
+    font-size: 280px;
+    text-align: center;
+    line-height: 285px;
+    margin-left: 40px;
+  }
 
   .even{
+    
     margin: 0 60px;
-    position: relative;
     padding: 50px 0;
-
-    img{
-    position: absolute;
-    left: 0;
-    top: 25px;
-    }
 
 
     .prop{
-      margin-left: 460px;
+      display: block;
+      float:right;
+      width:50%;
       padding-top: 3px;
       background-repeat: no-repeat;
       background-position: 50% 0;
@@ -778,22 +783,27 @@ header {
 
   .odd{
 
+    margin: 0 60px;
+    padding: 50px 0;    
+
     background: #fafcff;
-    padding: 0 60px;
     background-image: -webkit-gradient(linear, left top, right top, from(#fff), to(#f7fbff));
     background-image: -moz-linear-gradient(0deg, #fff, #f7fbff);
     background-image: -o-linear-gradient(left, #fff, #f7fbff);
 
-
-
       .prop{
-        margin-right: 460px;
+        display: block;
+        float:left;
+        width:50%;
         padding-top: 3px;
         background-repeat: no-repeat;
         background-position: 50% 0;
       }
 
   }
+
+  span.clearleft { clear: left; display: block; }
+  span.clearright { clear: right; display: block; }
 
 }
 
