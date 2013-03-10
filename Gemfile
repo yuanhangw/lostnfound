@@ -8,6 +8,9 @@ gem "font-awesome-rails"
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
+#enhance performance
+gem 'newrelic_rpm'
+
 #to customize bootstrap
 gem 'bootswatch-rails'
 
@@ -46,7 +49,7 @@ gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
 
-#another text_ediot
+#another text_editor
 gem 'bootstrap-wysihtml5-rails'
 
 
