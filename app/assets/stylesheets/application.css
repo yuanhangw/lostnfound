@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree .
  *= require redactor-rails
- *= require bootstrap-wysihtml5
  *= require font-awesome
  */
 
